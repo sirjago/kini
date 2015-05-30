@@ -41,27 +41,7 @@ $aciertox  =0;
 $results = DB::select('select @aciertox as aciertox');
 dd($results[0]->aciertox);
 
-//::select('select @aciertox as aciertox');
-//$results = DB::select('call quini.TotalJornadaUser(?,?,@aciertox)',array($param1, $param2, $aciertox));
- //dd($search);
 
-
-     
-    
-//return grupo_user::all();
-//	return grupos::all()->users;
-	//return User::find(2)->grupos;
-	//$grupod= User::find(1)->grupos;
-	//$grupete =  User::find(1)->grupos;
-      //  $user = User::find(1);
-	
-	//	dd($user();
-//dd($grupod->first()->pivot->owner);
-
-	
- //return grupos::find(14)->users;
-    // return grupos::all();
-//dd(User::find(1)->grupos(1));
 
 }
 
@@ -90,8 +70,8 @@ Route::get('jornadas/showo/{id}/{jor}',array('as'=>'jornadas/showo','uses'=>'Jor
 Route::get('jornadas/showo/{id}/{jor}',['middleware' =>'auth', 'uses' =>'JornadasController@show']);
 
 
-Route::get('grupos/{id}', array('as' =>'grupos.show','uses'=>'GruposController@show'));
-Route::get('grupos/{id}', ['middleware' =>'auth','uses'=>'GruposController@show']);
+Route::get('grupos/{id}/{jor}', array('as' =>'grupos.show','uses'=>'GruposController@show'));
+Route::get('grupos/{id}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@show']);
 Route::get('grupos/unirse/{id}', 'GruposController@unirse');
 Route::get('grupos/crear/{id}', 'GruposController@create');
 //Route::post('grupos/registrar', 'GruposController@register');

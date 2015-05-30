@@ -9,7 +9,7 @@
 
 <li>{!! $equipos[0]->nombre!!}</li><br><br>
 
-<a class="btn btn-success" href="http://localhost/quini/public/grupos/1" role="button">GRUPOS</a>
+<a class="btn btn-success" href="http://localhost/quini/public/grupos/1/1" role="button">GRUPOS</a>
 <li>{!! $equipos[1]->nombre!!}</li><br><br>
 
 <li>{!! $partidos[1]->jornada!!}</li>

@@ -14,7 +14,7 @@ class GruposController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($id,$jor)
     {
        if(Auth::user()->id== $id) {
 		//$grupo = grupos::whereownerid($id)->first();
@@ -27,7 +27,7 @@ class GruposController extends Controller {
 				return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro]);	
 			}
 
-		return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro]);	
+		return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
 		}  return  view('pages.singrupo',['grupos' => $grupo]); 
 
 		}
