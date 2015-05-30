@@ -37,7 +37,27 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 
 
 
+
+<?php $aciertox  =1; ?>
+
+
+
 <li>{!! $miembros !!}</li>
+
+
+
+@foreach ($miembros as $miembro)
+
+<?php $param1 = $miembro->id ; ?>
+<?php $param2 = 1; ?>
+<?php DB::select('CALL quini.TotalJornadaUser(?,?,@aciertox)',array($param1,$param2)); ?>
+<?php $results = DB::select('select @aciertox as aciertox'); ?>
+<li>{!! $miembro->username !!}</li> <li>Aciertos {!!$results[0]->aciertox!!} </li> <br> 
+
+
+@endforeach
+
+
 
 @stop
  
