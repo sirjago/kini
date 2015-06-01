@@ -2,25 +2,27 @@
 
 @section('content')
 
-<li>{!! $jornadas->jornada!!}</li>
+Jornada: <li>{!! $jornadas->jornada!!}</li>
 
 <li>{!! $jornadas!!}</li><br><br>
 <li>{!! $partidos!!}</li><br><br>
 
 <li>{!! $equipos[0]->nombre!!}</li><br><br>
 
-<a class="btn btn-success" href="http://localhost/quini/public/grupos/1/1" role="button">GRUPOS</a>
+<a class="btn btn-success" href="{{ URL::route('grupos.show',array(Auth::user()->id, 1)) }}" role="button">GRUPOS</a>
 <li>{!! $equipos[1]->nombre!!}</li><br><br>
 
-<li>{!! $partidos[1]->jornada!!}</li>
+Jornada de Partidos:<li>{!! $partidos[1]->jornada!!}</li>
 <br><br>
 <li>{!! $partidos[0]->local!!}   {!! $equipos[$partidos[0]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </li>
 
 <li>{!! $partidos[0]->visitante!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!} </li>
 <br><br>
 
-<li>{!! $resultados[0]->juego!!}</li>
+Resultado: {!! $resultados[0]->juego!!}
  
+<br>
+ juego : {!!$jornadas->juego1 !!}
  
 
 {!!   Form::model($jornadas, array('route' => array('jornadas/update', $jornadas->id,$jornadas->jornada), 'method' => 'PUT'))           !!}
@@ -33,17 +35,17 @@
 <br>
 
 <br><br><br><br>
-
+ {!! $a=0!!}
 <table style="width:80%">
   <tr>
-     {!! $a=0!!}
+    
  @if (strtotime($partidos[0]->horario) < strtotime('now'))
 	 
  
 	  @if ($jornadas->juego1 == 1)
-    <td>{!!Form::radio('j1', '1',true,array('id'=>'1','disabled' ))!!}    {!! $equipos[$partidos[0]->local]->nombre!!}</td>
-  <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled' ))!!}</td>
-    <td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled' ))!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
+    <td>{!!Form::radio('dj1', '1',true,array('id'=>'1','disabled' ))!!}  {!!Form::radio('j1', '1',true,array('id'=>'1','hidden' ))!!}   {!! $equipos[$partidos[0]->local]->nombre!!}</td>
+  <td>{!!Form::radio('dj1', '2',false,array('id'=>'2','disabled' ))!!}  {!!Form::radio('j1', '2',false,array('id'=>'2','hidden' ))!!}</td>
+    <td>{!!Form::radio('dj1', '3',false,array('id'=>'3','disabled' ))!!} {!!Form::radio('j1', '3',false,array('id'=>'3','hidden' ))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
 	@if ($resultados[0]->resultado == $jornadas->juego1)
 	 <td> Acierto  </td> 
            <?php $a++; ?> 
@@ -54,9 +56,9 @@
 	 
 	 
 	@elseif ($jornadas->juego1 == 2)
-    <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!}   {!! $equipos[$partidos[0]->local]->nombre!!} </td>
-    <td>{!!Form::radio('j1', '2',true,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
+    <td>{!!Form::radio('dj1', '1',false,array('id'=>'1','disabled'))!!}  {!!Form::radio('j1', '1',false,array('id'=>'1','hidden'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!} </td>
+    <td>{!!Form::radio('dj1', '2',true,array('id'=>'2','disabled'))!!}{!!Form::radio('j1', '2',true,array('id'=>'2','hidden'))!!}</td>
+	<td>{!!Form::radio('dj1', '3',false,array('id'=>'3','disabled'))!!} {!!Form::radio('j1', '3',false,array('id'=>'3','hidden'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
 	
 	@if ($resultados[0]->resultado == $jornadas->juego1)
 	 <td> Acierto  </td>
@@ -68,9 +70,9 @@
 	
 	
     @elseif 	($jornadas->juego1 == 3)
-    <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!}   {!! $equipos[$partidos[0]->local]->nombre!!}</td>
-    <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j1', '3',true,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
+    <td>{!!Form::radio('dj1', '1',false,array('id'=>'1','disabled'))!!}   {!!Form::radio('j1', '1',false,array('id'=>'1','hidden'))!!} {!! $equipos[$partidos[0]->local]->nombre!!}</td>
+    <td>{!!Form::radio('dj1', '2',false,array('id'=>'2','disabled'))!!}   {!!Form::radio('j1', '2',false,array('id'=>'2','hidden'))!!}</td>
+	<td>{!!Form::radio('dj1', '3',true,array('id'=>'3','disabled'))!!} {!!Form::radio('j1', '3',true,array('id'=>'3','hidden'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
 	
 	@if ($resultados[0]->resultado == $jornadas->juego1)
 	 <td> Acierto  </td>
@@ -115,7 +117,7 @@
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!}   </td>
 @endif
 
-
+ </tr>
   <tr>
   @if (strtotime($partidos[1]->horario) < strtotime('now'))
 	  @if ($jornadas->juego2 == 1)
@@ -123,9 +125,9 @@
   <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled' ))!!}</td>
     <td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled' ))!!}  {!! $equipos[$partidos[1]->visitante]->nombre!!}  </td>
 	@elseif ($jornadas->juego2 == 2)
-    <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!}  {!! $equipos[$partidos[1]->local]->nombre!!}   </td>
-    <td>{!!Form::radio('j1', '2',true,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[1]->visitante]->nombre!!}    </td>
+    <td>{!!Form::radio('j2', '1',false,array('id'=>'1','disabled'))!!}  {!! $equipos[$partidos[1]->local]->nombre!!}   </td>
+    <td>{!!Form::radio('j2', '2',true,array('id'=>'2','disabled'))!!}</td>
+	<td>{!!Form::radio('j2', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[1]->visitante]->nombre!!}    </td>
 @elseif 	($jornadas->juego2 == 3)
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!}   {!! $equipos[$partidos[1]->local]->nombre!!}   </td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled'))!!}</td>
@@ -453,12 +455,17 @@
 </table>
   Total {!!  $a !!}
   
+
   <br><br>
 
-    <td>{!!Form::radio('j10', '1',false,array('id'=>'1','disabled' ))!!}</td>
-    <td>{!!Form::radio('j10', '2',false,array('id'=>'2'))!!}</td>
-	<td>{!!Form::radio('j10', '3',false,array('id'=>'3'))!!}</td>
 
+
+
+    <td>{!!Form::radio('j10', '1',false,array('id'=>'1','hidden' ))!!}</td>
+    <td>{!!Form::radio('j10', '2',false,array('id'=>'2','readonly' ))!!}</td>
+	<td>{!!Form::radio('j10', '3',false,array('id'=>'3','readonly'))!!}</td>
+
+  
 
 <br><br><br><br>
 {!!Form::submit('Actualizar') !!}
