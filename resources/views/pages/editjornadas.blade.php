@@ -40,11 +40,11 @@
  @if (strtotime($partidos[0]->horario) < strtotime('now'))
 	 
  
-	  @if ($jornadas->juego == 1)
+	  @if ($jornadas->juego1 == 1)
     <td>{!!Form::radio('j1', '1',true,array('id'=>'1','disabled' ))!!}    {!! $equipos[$partidos[0]->local]->nombre!!}</td>
   <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled' ))!!}</td>
     <td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled' ))!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
-	@if ($resultados[0]->resultado == $jornadas->juego)
+	@if ($resultados[0]->resultado == $jornadas->juego1)
 	 <td> Acierto  </td> 
            <?php $a++; ?> 
        @else 
@@ -53,12 +53,12 @@
 	 
 	 
 	 
-	@elseif ($jornadas->juego == 2)
+	@elseif ($jornadas->juego1 == 2)
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!}   {!! $equipos[$partidos[0]->local]->nombre!!} </td>
     <td>{!!Form::radio('j1', '2',true,array('id'=>'2','disabled'))!!}</td>
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
 	
-	@if ($resultados[0]->resultado == $jornadas->juego)
+	@if ($resultados[0]->resultado == $jornadas->juego1)
 	 <td> Acierto  </td>
   <?php $a++; ?> 
        @else 
@@ -67,12 +67,12 @@
 	 
 	
 	
-    @elseif 	($jornadas->juego == 3)
+    @elseif 	($jornadas->juego1 == 3)
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!}   {!! $equipos[$partidos[0]->local]->nombre!!}</td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled'))!!}</td>
 	<td>{!!Form::radio('j1', '3',true,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
 	
-	@if ($resultados[0]->resultado == $jornadas->juego)
+	@if ($resultados[0]->resultado == $jornadas->juego1)
 	 <td> Acierto  </td>
   <?php $a++; ?> 
        @else 
@@ -85,7 +85,7 @@
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled'))!!}</td>
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled'))!!}   {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
 	
-	@if ($resultados[0]->resultado == $jornadas->juego)
+	@if ($resultados[0]->resultado == $jornadas->juego1)
 	 <td> Acierto  </td>
        @else 
 	 	 <td> fallo</td>
@@ -97,15 +97,15 @@
 	
 	
 	
-@elseif ($jornadas->juego == 1)
+@elseif ($jornadas->juego1 == 1)
     <td>{!!Form::radio('j1', '1',true,array('id'=>'1'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!} </td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2'))!!}</td>
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!} </td>
-@elseif ($jornadas->juego == 2)
+@elseif ($jornadas->juego1 == 2)
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!}  </td>
     <td>{!!Form::radio('j1', '2',true,array('id'=>'2'))!!}</td>
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!}   </td>
-@elseif 	($jornadas->juego == 3)
+@elseif 	($jornadas->juego1 == 3)
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!}  </td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2'))!!}</td>
 	<td>{!!Form::radio('j1', '3',true,array('id'=>'3'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!}  </td>

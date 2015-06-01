@@ -59,11 +59,11 @@ public function __construct()
 		//$listarray = array ('j1','j2',);
 		$equipos = equipos::all();
 		$partidos = partidos::wherejornada($jor)->orderBy('juego', 'asc')->get();
-
+	    $resultados = resultados::wherejornada($jor)->get();
 				//foreach ($listarray as $val)
 				//{print $val;
 		$jornada = new quiniela;
-        $jornada->juego =  Input::get('j1');
+        $jornada->juego1 =  Input::get('j1');
 		$jornada->juego2 =  Input::get('j2');
 		$jornada->juego3 =  Input::get('j3');
 		 $jornada->juego4 =  Input::get('j4');
@@ -75,7 +75,7 @@ public function __construct()
 		$jornada->jornada =  $jor;
 		$jornada->user_id = Auth::user()->id;
         $jornada->save();
-		return view('pages.editjornadas',['jornadas' => $jornada,'partidos' => $partidos,'equipos' => $equipos]);
+		return view('pages.editjornadas',['jornadas' => $jornada,'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados]);
 			//	}
 	
 	
@@ -126,10 +126,10 @@ public function __construct()
 	{
 		$equipos = equipos::all();
 			$partidos = partidos::wherejornada($jor)->orderBy('juego', 'asc')->get();
-			
+				$resultados = resultados::wherejornada($jor)->get();
 	
 		$jornada = quiniela::find($id);
-        $jornada->juego =  Input::get('j1');
+        $jornada->juego1 =  Input::get('j1');
 		$jornada->juego2 =  Input::get('j2');
 		$jornada->juego3 =  Input::get('j3');
 		 $jornada->juego4 =  Input::get('j4');
@@ -139,7 +139,7 @@ public function __construct()
 		$jornada->juego8 =  Input::get('j8');
 		$jornada->juego9 =  Input::get('j9');
         $jornada->save();
-		return view('pages.editjornadas',['jornadas' => $jornada, 'partidos' => $partidos,'equipos' => $equipos]);
+		return view('pages.editjornadas',['jornadas' => $jornada, 'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados]);
 	}
 
 	/**

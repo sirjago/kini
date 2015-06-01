@@ -16,32 +16,35 @@ class GruposController extends Controller {
      */
     public function show($id,$jor)
     {
-       if(Auth::user()->id== $id) {
+       if(Auth::user()->id == $id) 
+       {
 		//$grupo = grupos::whereownerid($id)->first();
 		$grupo =  User::find($id)->grupos;
 		
 	
-		if (!$grupo->isEmpty()){
+		if (!$grupo->isEmpty())
+		 {
 				$miembro = Grupos::find($grupo->first()->id)->users;
-			if($grupo->first()->pivot->owner == 1){
+			if($grupo->first()->pivot->owner == 1)
+			{
 				return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro]);	
 			}
-
-		return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
-		}  return  view('pages.singrupo',['grupos' => $grupo]); 
+		           return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
+		  }  
+		  return  view('pages.singrupo',['grupos' => $grupo]); 
 
 		}
-		return 'Failedo :(';
+		return $id ;
     }
 
 	
 	 public function create($id)
     {
-        if(Auth::user()->id== $id) {
+        if(Auth::user()->id == $id) {
 		$grupo = grupos::whereownerid($id)->first();
 		 return  view('pages.CrearGrupo',['grupos' => $grupo]); 
 		}
-		return 'Failedo :(';     
+		return 'FAILEDO VERGA'  ;     
 
 
 	
@@ -78,7 +81,7 @@ class GruposController extends Controller {
 
        //  return  view('pages.UnirseGrupo',['grupos' => $grupo]); 
 		
-       return Redirect::route('grupos.show',Auth::user()->id);
+       return Redirect::route('grupos.show',array(Auth::user()->id, 1));
 		}
 		//return 'Failedo :(';  
    // }
@@ -100,7 +103,7 @@ class GruposController extends Controller {
 		
 
 
-		return Redirect::route('grupos.show',Auth::user()->id);
+		return Redirect::route('grupos.show',array(Auth::user()->id, 1));
 		//return Redirect::route('pages.grupos',Auth::user()->id);
     }
 	

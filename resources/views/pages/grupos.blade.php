@@ -10,7 +10,7 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 <nav>
   <ul class="pagination">
     
-    <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+    <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
      <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>

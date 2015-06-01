@@ -70,10 +70,16 @@ Route::get('jornadas/showo/{id}/{jor}',array('as'=>'jornadas/showo','uses'=>'Jor
 Route::get('jornadas/showo/{id}/{jor}',['middleware' =>'auth', 'uses' =>'JornadasController@show']);
 
 
+Route::get('grupos/crear/{id}', array('as'=>'grupos/crear','uses'=>'GruposController@create'));
+Route::get('grupos/unirse/{id}', 'GruposController@unirse');
+
+
 Route::get('grupos/{id}/{jor}', array('as' =>'grupos.show','uses'=>'GruposController@show'));
 Route::get('grupos/{id}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@show']);
-Route::get('grupos/unirse/{id}', 'GruposController@unirse');
-Route::get('grupos/crear/{id}', 'GruposController@create');
+
+
+//Route::get('grupos/crear/{ido}', array('as' =>'grupos.create','uses'=>'GruposController@create'));
+//Route::get('grupos/crear/{id}', ['middleware' =>'auth','uses'=>'GruposController@create']);
 //Route::post('grupos/registrar', 'GruposController@register');
 Route::post('grupos/registrar', array('as' =>'grupos/registrar','uses'=>'GruposController@register'));
 Route::post('grupos/join', array('as' =>'grupos/join','uses'=>'GruposController@join'));
