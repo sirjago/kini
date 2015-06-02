@@ -110,10 +110,12 @@ class GruposController extends Controller {
 
  public function salir($id)
     {
-        if(Auth::user()->id== $id) {
-		
-		}
-		return 'Failedo :(';     
+       
+		$grupo = grupos::find($id);
+		$grupo->delete();
+
+		return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+		    
 
 
 	

@@ -69,6 +69,7 @@ Route::get('jornadas/showo/{id}/{jor}',array('as'=>'jornadas/showo','uses'=>'Jor
 
 Route::get('jornadas/showo/{id}/{jor}',['middleware' =>'auth', 'uses' =>'JornadasController@show']);
 
+Route::delete('salir/{id}', array('as'=>'grupos/salir','uses'=>'GruposController@salir'));
 
 Route::get('grupos/crear/{id}', array('as'=>'grupos/crear','uses'=>'GruposController@create'));
 Route::get('grupos/unirse/{id}', 'GruposController@unirse');

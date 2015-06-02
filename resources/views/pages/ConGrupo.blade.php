@@ -21,6 +21,8 @@ Nombre Del Grupo:<li>{!! $grupos[0]->nombre!!}</li>
 
 Clave del Grupo: <li>{!! $grupos[0]->clave!!}</li>
 
+GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
+
 
 
 
@@ -79,4 +81,12 @@ Miembros:<li>{!! $miembros !!}</li><br><br>
 <a class="btn btn-success" href="{{ URL::route('jornadas/showo',array(Auth::user()->id, 1)) }}" role="button">QUINIELA</a>
 
 
+
+
+
+
+{!! Form::open(array( 'method' => 'DELETE', 'route' => array('grupos/salir', $miembros[0]->pivot->grupos_id))) !!}
+                  
+                        
+                        {!! Form::submit('DESHACER GRUPO', array('class' => 'btn btn-success')) !!}
 @stop
