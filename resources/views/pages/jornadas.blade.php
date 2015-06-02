@@ -8,7 +8,7 @@
 <li>{!! $jor!!}</li>
 <li>{!! $equipos[0]->nombre!!}</li>
 
-<a class="btn btn-success" href="{{ URL::route('grupos.show',array(Auth::user()->id, $jor)) }}" role="button">GRUPOSX</a>
+<a class="btn btn-success" href="{{ URL::route('grupos.show',array(Auth::user()->id, $jor)) }}" role="button">GRUPOS</a>
 
 {!!Form::open(array('route' =>array('jornadas.guardar', $jor)))!!}
 
@@ -25,14 +25,14 @@
   <tr>
   @if (strtotime($partidos[0]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[0]->local]->nombre!!}</td>
+    <td>{!!Form::radio('j1', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[0]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!}  </td>
+	<td>{!!Form::radio('j1', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[0]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 @else     
 	
-    <td>{!!Form::radio('j1', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[0]->local]->nombre!!}</td>
+    <td>{!!Form::radio('j1', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[0]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!}    </td>
+    <td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}  </td>
 	 @endif
   </tr>
   
@@ -42,14 +42,14 @@
   <tr>
        @if (strtotime($partidos[1]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j2', '1',false,array('id'=>'1','disabled'))!!}{!! $equipos[$partidos[1]->local]->nombre!!}</td>
+    <td>{!!Form::radio('j2', '1',false,array('id'=>'1','disabled'))!!}{!! $equipos[$partidos[1]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[1]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j2', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j2', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[1]->visitante]->nombre!!} </td>
+	<td>{!!Form::radio('j2', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[1]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[1]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 @else     
 	
-    <td>{!!Form::radio('j2', '1',false,array('id'=>'1'))!!}{!! $equipos[$partidos[1]->local]->nombre!!}</td>
+    <td>{!!Form::radio('j2', '1',false,array('id'=>'1'))!!}{!! $equipos[$partidos[1]->local]->nombre!!} {!! HTML::image($equipos[$partidos[1]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}  </td>
     <td>{!!Form::radio('j2', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j2', '3',false,array('id'=>'3'))!!} {!! $equipos[$partidos[1]->visitante]->nombre!!}  </td>
+    <td>{!!Form::radio('j2', '3',false,array('id'=>'3'))!!} {!! $equipos[$partidos[1]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[1]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
 	 @endif
   </tr>
   
@@ -57,14 +57,14 @@
   <tr>
    @if (strtotime($partidos[2]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j3', '1',false,array('id'=>'1','disabled'))!!}{!! $equipos[$partidos[2]->local]->nombre!!}</td>
+    <td>{!!Form::radio('j3', '1',false,array('id'=>'1','disabled'))!!}{!! $equipos[$partidos[2]->local]->nombre!!}   {!! HTML::image($equipos[$partidos[2]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j3', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j3', '3',false,array('id'=>'3','disabled'))!!}{!! $equipos[$partidos[2]->visitante]->nombre!!} </td>
+	<td>{!!Form::radio('j3', '3',false,array('id'=>'3','disabled'))!!}{!! $equipos[$partidos[2]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[2]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}  </td>
 @else     
 	
-    <td>{!!Form::radio('j3', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[2]->local]->nombre!!}</td>
+    <td>{!!Form::radio('j3', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[2]->local]->nombre!!} {!! HTML::image($equipos[$partidos[2]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j3', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j3', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[2]->visitante]->nombre!!}       </td>
+    <td>{!!Form::radio('j3', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[2]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[2]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}      </td>
 	 @endif
   </tr>
   
@@ -73,84 +73,84 @@
    <tr>
    @if (strtotime($partidos[3]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j4', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[3]->local]->nombre!!}</td>
+    <td>{!!Form::radio('j4', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[3]->local]->nombre!!} {!! HTML::image($equipos[$partidos[3]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j4', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j4', '3',false,array('id'=>'3','disabled'))!!}   {!! $equipos[$partidos[3]->visitante]->nombre!!}  </td>
+	<td>{!!Form::radio('j4', '3',false,array('id'=>'3','disabled'))!!}   {!! $equipos[$partidos[3]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[3]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 @else     
 	
-    <td>{!!Form::radio('j4', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[3]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j4', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[3]->local]->nombre!!} {!! HTML::image($equipos[$partidos[3]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j4', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j4', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[3]->visitante]->nombre!!}    </td>
+    <td>{!!Form::radio('j4', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[3]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[3]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}  </td>
 	 @endif
   </tr>
   
    <tr>
       @if (strtotime($partidos[4]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j5', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[4]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j5', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[4]->local]->nombre!!} {!! HTML::image($equipos[$partidos[4]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j5', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j5', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[4]->visitante]->nombre!!}   </td>
+	<td>{!!Form::radio('j5', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[4]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[4]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}  </td>
 @else     
 	
-    <td>{!!Form::radio('j5', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[4]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j5', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[4]->local]->nombre!!} {!! HTML::image($equipos[$partidos[4]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j5', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j5', '3',false,array('id'=>'3'))!!}   {!! $equipos[$partidos[4]->visitante]->nombre!!}  </td>
+    <td>{!!Form::radio('j5', '3',false,array('id'=>'3'))!!}   {!! $equipos[$partidos[4]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[4]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 	 @endif
   </tr>
   
    <tr>
     @if (strtotime($partidos[5]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j6', '1',false,array('id'=>'1','disabled'))!!}  {!! $equipos[$partidos[5]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j6', '1',false,array('id'=>'1','disabled'))!!}  {!! $equipos[$partidos[5]->local]->nombre!!} {!! HTML::image($equipos[$partidos[5]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j6', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j6', '3',false,array('id'=>'3','disabled'))!!}  {!! $equipos[$partidos[5]->visitante]->nombre!!}   </td>
+	<td>{!!Form::radio('j6', '3',false,array('id'=>'3','disabled'))!!}  {!! $equipos[$partidos[5]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[5]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}  </td>
 @else     
 	
-    <td>{!!Form::radio('j6', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[5]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j6', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[5]->local]->nombre!!}{!! HTML::image($equipos[$partidos[5]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j6', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j6', '3',false,array('id'=>'3'))!!}   {!! $equipos[$partidos[5]->visitante]->nombre!!}  </td>
+    <td>{!!Form::radio('j6', '3',false,array('id'=>'3'))!!}   {!! $equipos[$partidos[5]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[5]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 	 @endif
   </tr>
   
    <tr>
     @if (strtotime($partidos[6]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j7', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[6]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j7', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[6]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[6]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}  </td>
     <td>{!!Form::radio('j7', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j7', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[6]->visitante]->nombre!!}    </td>
+	<td>{!!Form::radio('j7', '3',false,array('id'=>'3','disabled'))!!} {!! $equipos[$partidos[6]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[6]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}   </td>
 @else     
 	
-    <td>{!!Form::radio('j7', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[6]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j7', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[6]->local]->nombre!!} {!! HTML::image($equipos[$partidos[6]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j7', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j7', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[6]->visitante]->nombre!!}   </td>
+    <td>{!!Form::radio('j7', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[6]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[6]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 	 @endif
   </tr>
   
    <tr>
     @if (strtotime($partidos[7]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j8', '1',false,array('id'=>'1','disabled'))!!}  {!! $equipos[$partidos[7]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j8', '1',false,array('id'=>'1','disabled'))!!}  {!! $equipos[$partidos[7]->local]->nombre!!} {!! HTML::image($equipos[$partidos[7]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j8', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j8', '3',false,array('id'=>'3','disabled'))!!}{!! $equipos[$partidos[7]->visitante]->nombre!!} </td>
+	<td>{!!Form::radio('j8', '3',false,array('id'=>'3','disabled'))!!}{!! $equipos[$partidos[7]->visitante]->nombre!!}{!! HTML::image($equipos[$partidos[7]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 @else     
 	
-    <td>{!!Form::radio('j8', '1',false,array('id'=>'1'))!!}   {!! $equipos[$partidos[7]->local]->nombre!!} </td>
+    <td>{!!Form::radio('j8', '1',false,array('id'=>'1'))!!}   {!! $equipos[$partidos[7]->local]->nombre!!}{!! HTML::image($equipos[$partidos[7]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j8', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j8', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[7]->visitante]->nombre!!}   </td>
+    <td>{!!Form::radio('j8', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[7]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[7]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 	 @endif
   </tr>
   
    <tr>
      @if (strtotime($partidos[8]->horario) < strtotime('now'))
 	
-    <td>{!!Form::radio('j9', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[8]->local]->nombre!!}  </td>
+    <td>{!!Form::radio('j9', '1',false,array('id'=>'1','disabled'))!!} {!! $equipos[$partidos[8]->local]->nombre!!} {!! HTML::image($equipos[$partidos[8]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j9', '2',false,array('id'=>'2','disabled'))!!}</td>
-	<td>{!!Form::radio('j9', '3',false,array('id'=>'3','disabled'))!!}  {!! $equipos[$partidos[8]->visitante]->nombre!!}  </td>
+	<td>{!!Form::radio('j9', '3',false,array('id'=>'3','disabled'))!!}  {!! $equipos[$partidos[8]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[8]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 @else     
 	
-    <td>{!!Form::radio('j9', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[8]->local]->nombre!!}   </td>
+    <td>{!!Form::radio('j9', '1',false,array('id'=>'1'))!!} {!! $equipos[$partidos[8]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[8]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j9', '2',false,array('id'=>'2'))!!}</td>		
-    <td>{!!Form::radio('j9', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[8]->visitante]->nombre!!}   </td>
+    <td>{!!Form::radio('j9', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[8]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[8]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 	 @endif
   </tr>
 </table>

@@ -27,7 +27,7 @@ class GruposController extends Controller {
 				$miembro = Grupos::find($grupo->first()->id)->users;
 			if($grupo->first()->pivot->owner == 1)
 			{
-				return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro]);	
+				return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
 			}
 		           return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
 		  }  
@@ -107,4 +107,16 @@ class GruposController extends Controller {
 		//return Redirect::route('pages.grupos',Auth::user()->id);
     }
 	
+
+ public function salir($id)
+    {
+        if(Auth::user()->id== $id) {
+		
+		}
+		return 'Failedo :(';     
+
+
+	
+    }
+
 }

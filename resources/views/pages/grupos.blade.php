@@ -57,7 +57,7 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 
 @endforeach
 
-
+<a class="btn btn-success" href="{{ URL::route('jornadas/showo',array(Auth::user()->id, 1)) }}" role="button">QUINIELA</a>
 
 @stop
  
