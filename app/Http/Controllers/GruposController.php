@@ -121,4 +121,16 @@ class GruposController extends Controller {
 	
     }
 
+
+    public function dejar($id,$grupo)
+    {
+       
+		$user = User::find($id);
+	    $user->removeGrupo($grupo);
+		    
+
+        return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+	
+    }
+
 }

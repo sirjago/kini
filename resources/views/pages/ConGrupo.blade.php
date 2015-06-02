@@ -86,7 +86,6 @@ Miembros:<li>{!! $miembros !!}</li><br><br>
 
 
 {!! Form::open(array( 'method' => 'DELETE', 'route' => array('grupos/salir', $miembros[0]->pivot->grupos_id))) !!}
-                  
-                        
+                      
                         {!! Form::submit('DESHACER GRUPO', array('class' => 'btn btn-success')) !!}
 @stop

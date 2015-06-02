@@ -59,5 +59,7 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 
 <a class="btn btn-success" href="{{ URL::route('jornadas/showo',array(Auth::user()->id, 1)) }}" role="button">QUINIELA</a>
 
+<a class="btn btn-success" href="{{ URL::route('grupos/dejar',array(Auth::user()->id, $miembros[0]->pivot->grupos_id)) }}" role="button">ABANDONAR GRUPO</a>
+
 @stop
  
