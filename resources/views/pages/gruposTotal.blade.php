@@ -35,7 +35,7 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 </nav>
 
 
-
+VERGAAA
 
 
 
@@ -52,15 +52,15 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 
 {{-- Call a SP y asginacion de valors a arrays--}}
 @foreach ($miembros as $miembro)
-<?php $aciertox  =0; ?>
+<?php $totalo  =0; ?>
 <?php $param1 = $miembro->id ; ?>
+<?php DB::select('CALL quini.TotalFinalUser(?,@totalo)',array($param1)); ?>
 
-<?php DB::select('CALL quini.TotalJornadaUser(?,?,@aciertox)',array($param2,$param1)); ?>
-<?php $results = DB::select('select @aciertox as aciertox'); ?>
-<li>{!! $miembro->username !!}</li> <li>Aciertos {!!$results[0]->aciertox!!} </li> <br> 
+<?php $results = DB::select('select @totalo as totalo'); ?>
+<li>{!! $miembro->username !!}</li> <li>Aciertos {!!$results[0]->totalo!!} </li> <br> 
 
 
-<?php $arrai[$z] = Collect($results[0]->aciertox); ?>
+<?php $arrai[$z] = Collect($results[0]->totalo); ?>
 <?php $usernam [$z] =Collect( $miembro->username ); ?>
 <?php $z  =$z+1; ?>
 

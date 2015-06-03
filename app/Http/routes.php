@@ -76,6 +76,7 @@ Route::get('grupos/dejar/{id}/{grupo}', array('as'=>'grupos/dejar','uses'=>'Grup
 Route::get('grupos/crear/{id}', array('as'=>'grupos/crear','uses'=>'GruposController@create'));
 Route::get('grupos/unirse/{id}', 'GruposController@unirse');
 
+Route::get('grupos/total/{id}/{jor}', array('as' =>'grupos.total','uses'=>'GruposController@total'));
 
 Route::get('grupos/{id}/{jor}', array('as' =>'grupos.show','uses'=>'GruposController@show'));
 Route::get('grupos/{id}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@show']);

@@ -34,7 +34,7 @@ class GruposController extends Controller {
 		  return  view('pages.singrupo',['grupos' => $grupo]); 
 
 		}
-		return $id ;
+		return 'Failed' ;
     }
 
 	
@@ -132,5 +132,32 @@ class GruposController extends Controller {
         return Redirect::route('grupos.show',array(Auth::user()->id, 1));
 	
     }
+
+
+     public function total($id,$jor)
+    {
+       
+		 if(Auth::user()->id == $id) 
+       {
+	
+		$grupo =  User::find($id)->grupos;
+		
+	
+		if (!$grupo->isEmpty())
+		 {
+				$miembro = Grupos::find($grupo->first()->id)->users;
+			if($grupo->first()->pivot->owner == 1)
+			{
+				return view('pages.ConGrupoTotal',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
+			}
+		           return view('pages.gruposTotal',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
+		  }  
+		  return  view('pages.singrupo',['grupos' => $grupo]); 
+
+		}
+		return 'Failed' ;
+	
+    }
+
 
 }
