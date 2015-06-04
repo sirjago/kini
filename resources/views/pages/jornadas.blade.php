@@ -164,32 +164,452 @@
 {!!Form::submit('Guardar') !!}
 {!!Form::close()!!}
 
+@if($jor==1)
 <nav>
   <ul class="pagination">
     
-    <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 <span class="sr-only">(current)</span></a></li>
-     <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2 </a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
-	 
-	 
-	 
-      
+    <li class="active"  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
   </ul>
 </nav>
+
+   @elseif ($jor==2)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li class="active" ><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==3)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li class="active" ><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==4)
+<nav>
+  <ul class="pagination">
+    
+    <li   ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li class="active"><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==5)
+<nav>
+  <ul class="pagination">
+    
+    <li   ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==6)
+<nav>
+  <ul class="pagination">
+    
+    <li   ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==7)
+<nav>
+  <ul class="pagination">
+    
+    <li   ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==8)
+<nav>
+  <ul class="pagination">
+    
+    <li   ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==9)
+<nav>
+  <ul class="pagination">
+    
+    <li   ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==10)
+<nav>
+  <ul class="pagination">
+    
+    <li   ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==11)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+
+@elseif ($jor==12)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li class="active" ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==13)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==14)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+
+@elseif ($jor==15)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==16)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+@elseif ($jor==17)
+<nav>
+  <ul class="pagination">
+    
+    <li  ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 1))!!}">1 </a></li>
+     <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 2))!!}">2<span class="sr-only">(current)</span> </a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 3))!!}">3</a></li>
+   <li><a  href="{!!route('jornadas/showo',array(Auth::user()->id, 4))!!}">4</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 5))!!}">5</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 6))!!}">6</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 7))!!}">7</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 8))!!}">8</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 9))!!}">9</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 10))!!}">10</a></li>
+   <li ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 11))!!}">11</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 12))!!}">12</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 13))!!}">13</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 14))!!}">14</a></li>
+   <li><a href="{!!route('jornadas/showo',array(Auth::user()->id, 15))!!}">15</a></li>
+   <li ><a href="{!!route('jornadas/showo',array(Auth::user()->id, 16))!!}">16</a></li>
+   <li class="active"><a href="{!!route('jornadas/showo',array(Auth::user()->id, 17))!!}">17</a></li>
+   
+
+  </ul>
+</nav>
+
+
+   @endif
 
 @stop
  
