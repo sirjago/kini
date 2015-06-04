@@ -1,6 +1,11 @@
 @extends('master')
 
 @section('content')
+
+@foreach($errors->all() as $error)
+<li>{!! $error!!}</li>
+@endforeach
+
 CREAR GRUPO
 
 

@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateUserRequest extends Request {
+class UnirseGrupoRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,20 +22,17 @@ class CreateUserRequest extends Request {
 	public function rules()
 	{
 		return [
-			'username'=> 'required|unique:users' ,
-	     	'email'=> 'required|unique:users' ,
-			'password'=> 'required'
+			'clave'=> 'required:grupos' ,
+	     	
 		];
 	}
 	
 	public function messages()
 	{
 		return [
-			'username.required'=> 'Ingresa el usuario',
-			'email.unique'=> 'Esa cuenta de email ya existe',
-			'username.unique'=> 'Ese usuario ya existe',
-			'password.required'=> 'Ingresa la contraseña',
-			'email.required'=> 'Ingresa el email',
+			'clave.required'=> 'Ingresa la clave del grupo',
+			
+			
 		];
 	}
 

@@ -5,6 +5,8 @@ use Auth;
 use Input;
 use Redirect;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateGrupoRequest;
+use App\Http\Requests\UnirseGrupoRequest;
 
 class GruposController extends Controller {
 
@@ -44,7 +46,7 @@ class GruposController extends Controller {
 		$grupo = grupos::whereownerid($id)->first();
 		 return  view('pages.CrearGrupo',['grupos' => $grupo]); 
 		}
-		return 'FAILEDO VERGA'  ;     
+		return 'FAILEDO '  ;     
 
 
 	
@@ -63,7 +65,7 @@ class GruposController extends Controller {
 	
     }
 	
-	public function join()
+	public function join(UnirseGrupoRequest $request)
     {
       // if(Auth::user()->id== $id) {
          $clave = Input::get('clave');
@@ -87,7 +89,7 @@ class GruposController extends Controller {
    // }
 
 
-    public function register()
+    public function register(CreateGrupoRequest $request)
     {
         $grupo = new Grupos;
 		$grupo->nombre = Input::get('nombre');

@@ -2,7 +2,7 @@
 
 @section('content')
 
-Jornada: <li>{!! $jornadas->jornada!!}</li>
+
 
 <li>{!! $jornadas!!}</li><br><br>
 <li>{!! $partidos!!}</li><br><br>
@@ -14,13 +14,7 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 
 
 <br><br>
-<li>{!! $partidos[0]->local!!}   {!! $equipos[$partidos[0]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </li>
 
-<li>{!! $partidos[0]->visitante!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!} </li>
-<br><br>
-
-<br>
- juego : {!!$jornadas->juego1 !!}
  
 
 {!!   Form::model($jornadas, array('route' => array('jornadas/update', $jornadas->id,$jornadas->jornada), 'method' => 'PUT'))           !!}
@@ -37,9 +31,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 
  
 
-
+Jornada: <li>{!! $jornadas->jornada!!}</li>
 <br><br><br><br>
- {!! $a=0!!}
+  <?php $a=0; ?>
 <table style="width:80%">
   <tr>
     {{-- Radios para el primer partido analizando si ya es partido pasado --}}
@@ -54,10 +48,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
    {{-- Valida que tenga datos de los resultados que vienen de la BD --}}
   @if (isset($resultados[0]))
   @if ($resultados[0]->resultado == $jornadas->juego1)
-	 <td> Acierto  </td> 
+	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!} Acierto  </td> 
            <?php $a++; ?> 
        @else 
-	 	 <td> fallo  </td>
+	 	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!}  Fallo  </td>
 	 @endif
    @endif
 	 
@@ -70,10 +64,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 	
   @if (isset($resultados[0]))
 	@if ($resultados[0]->resultado == $jornadas->juego1)
-	 <td> Acierto  </td>
+	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!}  Acierto  </td>
   <?php $a++; ?> 
        @else 
-	 	 <td> fallo  </td>
+	 	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!}  fallo  </td>
 	 @endif
 	  @endif
 	
@@ -85,10 +79,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 
 @if (isset($resultados[0]))
 	@if ($resultados[0]->resultado == $jornadas->juego1)
-	 <td> Acierto  </td>
+	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!}  Acierto  </td>
   <?php $a++; ?> 
        @else 
-	 	 <td> fallo  </td>
+	 	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!}  fallo  </td>
 	 @endif
    @endif
    
@@ -101,9 +95,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 	
   @if (isset($resultados[0]))
 	@if ($resultados[0]->resultado == $jornadas->juego1)
-	 <td> Acierto  </td>
+	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!}  Acierto  </td>
        @else 
-	 	 <td> fallo</td>
+	 	 <td>{!!$resultados[0]->ML!!} - {!!$resultados[0]->MV!!}  fallo</td>
 	 @endif
 	 @endif
 	
@@ -145,10 +139,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
    @if (isset($resultados[1]))
   @if ($resultados[1]->resultado == $jornadas->juego2)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!}  Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -160,10 +154,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
      @if (isset($resultados[1]))
   @if ($resultados[1]->resultado == $jornadas->juego2)
-   <td> Acierto  </td>
+   <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!} fallo  </td>
    @endif
    @endif
   
@@ -175,10 +169,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
      @if (isset($resultados[1]))
   @if ($resultados[1]->resultado == $jornadas->juego2)
-   <td> Acierto  </td>
+   <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!} fallo  </td>
    @endif
    @endif
   
@@ -189,9 +183,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
    @if (isset($resultados[1]))
   @if ($resultados[1]->resultado == $jornadas->juego2)
-   <td> Acierto  </td>
+   <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!} Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td>{!!$resultados[1]->ML!!} - {!!$resultados[1]->MV!!} fallo</td>
    @endif
    @endif
   
@@ -233,10 +227,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
  @if (isset($resultados[2]))
   @if ($resultados[2]->resultado == $jornadas->juego3)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -248,10 +242,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
    @if (isset($resultados[2]))
   @if ($resultados[2]->resultado == $jornadas->juego3)
-   <td> Acierto  </td>
+   <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} fallo  </td>
    @endif
    @endif
   
@@ -263,10 +257,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
    @if (isset($resultados[2]))
   @if ($resultados[2]->resultado == $jornadas->juego3)
-   <td> Acierto  </td>
+   <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} fallo  </td>
    @endif
   @endif
 
@@ -279,9 +273,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[2]))
   @if ($resultados[2]->resultado == $jornadas->juego3)
-   <td> Acierto  </td>
+   <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td>{!!$resultados[2]->ML!!} - {!!$resultados[2]->MV!!} fallo</td>
    @endif
    @endif
    
@@ -326,10 +320,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[3]))
   @if ($resultados[3]->resultado == $jornadas->juego4)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -341,10 +335,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   <td>{!!Form::radio('dj4', '3',false,array('id'=>'3','disabled'))!!} {!!Form::radio('j4', '3',false,array('id'=>'3','hidden'))!!} {!! $equipos[$partidos[3]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[3]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     @if (isset($resultados[3]))
   @if ($resultados[3]->resultado == $jornadas->juego4)
-   <td> Acierto  </td>
+   <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} fallo  </td>
    @endif
    @endif
   
@@ -355,10 +349,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   <td>{!!Form::radio('dj4', '3',true,array('id'=>'3','disabled'))!!} {!!Form::radio('j4', '3',true,array('id'=>'3','hidden'))!!} {!! $equipos[$partidos[3]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[3]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     @if (isset($resultados[3]))
   @if ($resultados[3]->resultado == $jornadas->juego4)
-   <td> Acierto  </td>
+   <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} fallo  </td>
    @endif
      @endif
 
@@ -369,9 +363,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   <td>{!!Form::radio('j4', '3',false,array('id'=>'3','disabled'))!!}   {!! $equipos[$partidos[3]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[3]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     @if (isset($resultados[3]))
   @if ($resultados[3]->resultado == $jornadas->juego4)
-   <td> Acierto  </td>
+   <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td>{!!$resultados[3]->ML!!} - {!!$resultados[3]->MV!!} fallo</td>
    @endif
      @endif
    
@@ -415,10 +409,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[4]))
   @if ($resultados[4]->resultado == $jornadas->juego5)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!} Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!}  fallo  </td>
    @endif
    @endif
    
@@ -430,10 +424,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[4]))
   @if ($resultados[4]->resultado == $jornadas->juego5)
-   <td> Acierto  </td>
+   <td>{!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!}  fallo  </td>
    @endif
    @endif
   
@@ -445,10 +439,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
     
     @if (isset($resultados[4]))
   @if ($resultados[4]->resultado == $jornadas->juego5)
-   <td> Acierto  </td>
+   <td>{!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!}  Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!}  fallo  </td>
    @endif
     @endif
    
@@ -459,9 +453,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   <td>{!!Form::radio('j5', '3',false,array('id'=>'3','disabled'))!!}   {!! $equipos[$partidos[4]->visitante]->nombre!!}{!! HTML::image($equipos[$partidos[4]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}   </td>
    @if (isset($resultados[4]))
   @if ($resultados[4]->resultado == $jornadas->juego5)
-   <td> Acierto  </td>
+   <td>{!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!}  Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td> {!!$resultados[4]->ML!!} - {!!$resultados[4]->MV!!} fallo</td>
    @endif
    @endif
   
@@ -504,10 +498,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
 @if (isset($resultados[5]))
   @if ($resultados[5]->resultado == $jornadas->juego6)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!}   Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td> {!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -520,10 +514,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[5]))
   @if ($resultados[5]->resultado == $jornadas->juego6)
-   <td> Acierto  </td>
+   <td>  {!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!} fallo  </td>
    @endif
    @endif
   
@@ -535,10 +529,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
  
   @if (isset($resultados[5]))
   @if ($resultados[5]->resultado == $jornadas->juego6)
-   <td> Acierto  </td>
+   <td>{!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -550,9 +544,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[5]))
   @if ($resultados[5]->resultado == $jornadas->juego6)
-   <td> Acierto  </td>
+   <td>{!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!} Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td>{!!$resultados[5]->ML!!} - {!!$resultados[5]->MV!!} fallo</td>
    @endif
    @endif
   
@@ -595,10 +589,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
    {{-- Valida que tenga datos de los resultados que vienen de la BD --}}
   @if (isset($resultados[6]))
   @if ($resultados[6]->resultado == $jornadas->juego7)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>  {!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -611,10 +605,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[6]))
   @if ($resultados[6]->resultado == $jornadas->juego7)
-   <td> Acierto  </td>
+   <td>{!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} fallo  </td>
    @endif
     @endif
   
@@ -626,10 +620,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 
 @if (isset($resultados[6]))
   @if ($resultados[6]->resultado == $jornadas->juego7)
-   <td> Acierto  </td>
+   <td>{!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -642,9 +636,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[6]))
   @if ($resultados[6]->resultado == $jornadas->juego7)
-   <td> Acierto  </td>
+   <td>{!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td>{!!$resultados[6]->ML!!} - {!!$resultados[6]->MV!!} fallo</td>
    @endif
    @endif
   
@@ -686,10 +680,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
    {{-- Valida que tenga datos de los resultados que vienen de la BD --}}
   @if (isset($resultados[7]))
   @if ($resultados[7]->resultado == $jornadas->juego8)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  fallo  </td>
    @endif
    @endif
    
@@ -702,10 +696,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[7]))
   @if ($resultados[7]->resultado == $jornadas->juego8)
-   <td> Acierto  </td>
+   <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  fallo  </td>
    @endif
     @endif
   
@@ -717,10 +711,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 
 @if (isset($resultados[7]))
   @if ($resultados[7]->resultado == $jornadas->juego8)
-   <td> Acierto  </td>
+   <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  fallo  </td>
    @endif
    @endif
    
@@ -733,9 +727,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[7]))
   @if ($resultados[7]->resultado == $jornadas->juego8)
-   <td> Acierto  </td>
+   <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td>{!!$resultados[7]->ML!!} - {!!$resultados[7]->MV!!}  fallo</td>
    @endif
    @endif
   
@@ -775,12 +769,13 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
     <td>{!!Form::radio('dj9', '3',false,array('id'=>'3','disabled' ))!!} {!!Form::radio('j9', '3',false,array('id'=>'3','hidden' ))!!} {!! $equipos[$partidos[8]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[8]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
   
    {{-- Valida que tenga datos de los resultados que vienen de la BD --}}
+
   @if (isset($resultados[8]))
   @if ($resultados[8]->resultado == $jornadas->juego9)
-   <td> Acierto  </td> 
+   <td>{!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!}  Acierto  </td> 
            <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -793,10 +788,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[8]))
   @if ($resultados[8]->resultado == $jornadas->juego9)
-   <td> Acierto  </td>
+   <td>{!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td>{!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!} fallo  </td>
    @endif
     @endif
   
@@ -808,10 +803,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 
 @if (isset($resultados[8]))
   @if ($resultados[8]->resultado == $jornadas->juego9)
-   <td> Acierto  </td>
+   <td>{!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!} Acierto  </td>
   <?php $a++; ?> 
        @else 
-     <td> fallo  </td>
+     <td> {!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!} fallo  </td>
    @endif
    @endif
    
@@ -824,9 +819,9 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
   @if (isset($resultados[8]))
   @if ($resultados[8]->resultado == $jornadas->juego9)
-   <td> Acierto  </td>
+   <td>{!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!} Acierto  </td>
        @else 
-     <td> fallo</td>
+     <td>{!!$resultados[8]->ML!!} - {!!$resultados[8]->MV!!} fallo</td>
    @endif
    @endif
   
@@ -864,7 +859,8 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   
    
 </table>
-  Total {!!  $a !!}
+  <br><br>
+Total de aciertos de la jornada {!!  $a !!}
   
 
   <br><br>
@@ -872,14 +868,10 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
 
 
 
-    <td>{!!Form::radio('j10', '1',false,array('id'=>'1','hidden' ))!!}</td>
-    <td>{!!Form::radio('j10', '2',false,array('id'=>'2','readonly' ))!!}</td>
-	<td>{!!Form::radio('j10', '3',false,array('id'=>'3','readonly'))!!}</td>
-
   
 
 <br><br><br><br>
-{!!Form::submit('Actualizar') !!}
+{!!Form::submit('Actualizar') !!}<br><br>
 {!!Form::close()!!}
 
 @if($jor==1)
