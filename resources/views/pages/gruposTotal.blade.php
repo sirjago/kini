@@ -10,9 +10,9 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 <nav>
   <ul class="pagination">
     
-    <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
+    <li><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
      <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2 </a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
+	 <li><a  href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
@@ -27,7 +27,7 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
 	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+	 <li class="active" ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
 	 
 	 
       
@@ -35,12 +35,11 @@ Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 </nav>
 
 
-VERGAAA
 
 
 
 
-<li>{!! $jor !!}</li>
+
 
 <li>{!! $miembros !!}</li>
 
