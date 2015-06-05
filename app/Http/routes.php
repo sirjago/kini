@@ -10,19 +10,20 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+use Jenssegers\Date\Date;
 use App\user;
 use App\grupos;
 
 Route::get('/lolo', function()
 {
-	//user::first()->roles()->attach(3);
-	$user = User::first();
-	$user->removeRole(3);
-	//$user->assignRole(1);
-	
-/* 	if ($user->hasRole('owner'))return 'you are the owner';
-	return 'you are not'; */
+/*setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
+$string = "2015-05-14";
+$date = DateTime::createFromFormat("d/m/Y", $string);
+echo strftime("%A",$date->getTimestamp());
+echo strftime("%A %d de %B del %Y %H",$date->getTimestamp());*/
+
+Date::setLocale('es');
+echo Date::now()->format('l j F Y H:i:s'); 
 }
 );
 
