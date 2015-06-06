@@ -8,7 +8,7 @@
 <li>{!! $jornadas!!}</li>
 <li>{!! $jor!!}</li>
 <li>{!! $equipos[0]->nombre!!}</li>
-<li>{!! $resultados[0]->resultado!!}</li>
+
 <a class="btn btn-success" href="{{ URL::route('grupos.show',array(Auth::user()->id, $jor)) }}" role="button">GRUPOS</a>
 
 {!!Form::open(array('route' =>array('jornadas.guardar', $jor)))!!}
