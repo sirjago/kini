@@ -4,13 +4,14 @@
 
 @section('content')
 <?php  use Jenssegers\Date\Date;   ?>
+<?php  use  Carbon\Carbon ;   ?>
 <?php  Date::setLocale('es');  ?>
 
 
 
 
 
-<li>{!! $jornadas!!}</li><br><br>
+VALUE<li>{!! $jornadas->RL!!}</li><br><br>
 <li>{!! $partidos!!}</li><br><br>
 
 <li>{!! $equipos[0]->nombre!!}</li><br><br>
@@ -31,8 +32,8 @@
 <br>
 
 <br>
-
-
+{!! strtotime('now')!!}
+{!! Carbon::now()!!}
 
 
  
@@ -122,22 +123,22 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
     <td>{!!Form::radio('j1', '1',true,array('id'=>'1'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!} {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2'))!!}</td>
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[0]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[0]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
-   <td>{!! $date->format('l j H:i')  !!}</td>
+   <td>{!! $date->format('l j / H:i')  !!}hrs</td>
 @elseif ($jornadas->juego1 == 2)
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!} {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
     <td>{!!Form::radio('j1', '2',true,array('id'=>'2'))!!}</td>
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
- <td>{!! $date->format('l j H:i')  !!}</td>
+ <td>{!! $date->format('l j / H:i')  !!}hrs</td>
 @elseif 	($jornadas->juego1 == 3)
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2'))!!}</td>
 	<td>{!!Form::radio('j1', '3',true,array('id'=>'3'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!}  {!! HTML::image($equipos[$partidos[0]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
- <td>{!! $date->format('l j H:i')  !!}</td>
+ <td>{!! $date->format('l j / H:i')  !!}hrs</td>
 @else
     <td>{!!Form::radio('j1', '1',false,array('id'=>'1'))!!}  {!! $equipos[$partidos[0]->local]->nombre!!} {!! HTML::image($equipos[$partidos[0]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
     <td>{!!Form::radio('j1', '2',false,array('id'=>'2'))!!}</td>
 	<td>{!!Form::radio('j1', '3',false,array('id'=>'3'))!!} {!! $equipos[$partidos[0]->visitante]->nombre!!}   {!! HTML::image($equipos[$partidos[0]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!}</td>
- <td>{!! $date->format('l j H:i')  !!}</td>
+ <td>{!! $date->format('l j / H:i')  !!}hrs</td>
 @endif
 
  </tr>
@@ -905,7 +906,11 @@ Jornada: <li>{!! $jornadas->jornada!!}</li>
   </tr>
   
 
-  
+      <tr>
+ <td>{!! Form::select('RL', array('default' => $jornadas->RL,'0' => '0','1' => '1', '2' => '2','3' => '3','4' => '4','5' => '5','6' => '6','7' => '7','8' => '8','9' => '9'))!!}{!! $equipos[$partidos[8]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[8]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
+ <td>{!!Form::radio('j10', '2',false,array('id'=>'2','hidden'))!!}Marcador para desempate</td>   
+ <td>{!! Form::select('RV', array('default' => $jornadas->RV,'0' => '0','1' => '1', '2' => '2','3' => '3','4' => '4','5' => '5','6' => '6','7' => '7','8' => '8','9' => '9'))!!}  {!! $equipos[$partidos[8]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[8]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
+  </tr>
   
 
   

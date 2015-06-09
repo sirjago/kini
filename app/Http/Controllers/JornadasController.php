@@ -72,10 +72,26 @@ public function __construct()
 		 $jornada->juego7 =  Input::get('j7');
 		$jornada->juego8 =  Input::get('j8');
 		$jornada->juego9 =  Input::get('j9');
+		
+         $val = Input::get('RL');
+if( $val == "default"){
+$jornada->RL = null;}
+else{ $jornada->RL =  Input::get('RL'); 
+	
+}
+  $val2 = Input::get('RV');
+if( $val2 == "default"){
+$jornada->RL = null;}
+else{ $jornada->RL =  Input::get('RV'); 
+	
+}
+
+
+	
 		$jornada->jornada =  $jor;
 		$jornada->user_id = Auth::user()->id;
         $jornada->save();
-		return view('pages.editjornadas',['jornadas' => $jornada,'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados]);
+		return view('pages.editjornadas',['jornadas' => $jornada,'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados])->with('jor',$jor)->with('val',$val);
 			//	}
 	
 	
@@ -93,6 +109,9 @@ public function __construct()
 	 */
 	public function show($id,$jor)
 	{
+
+
+
 			$equipos = equipos::all();
 			$resultados = resultados::wherejornada($jor)->get();;
 			$partidos = partidos::wherejornada($jor)->orderBy('juego', 'asc')->get();
@@ -138,8 +157,27 @@ public function __construct()
 		 $jornada->juego7 =  Input::get('j7');
 		$jornada->juego8 =  Input::get('j8');
 		$jornada->juego9 =  Input::get('j9');
+
+
+
+       $val = Input::get('RL');
+if($val == null){
+$jornada->RL = null;}
+else{ $jornada->RL =  Input::get('RL'); 
+	
+}
+
+
+       $val2 = Input::get('RV');
+if($val2 == null){
+$jornada->RV = null;}
+else{ $jornada->RV =  Input::get('RV'); 
+	
+}
+
+
         $jornada->save();
-		return view('pages.editjornadas',['jornadas' => $jornada, 'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados]);
+		return view('pages.editjornadas',['jornadas' => $jornada, 'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados])->with('jor',$jor)->with('val',$val);
 	}
 
 	/**

@@ -247,11 +247,17 @@
     <td>{!!Form::radio('j9', '3',false,array('id'=>'3'))!!}  {!! $equipos[$partidos[8]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[8]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
 	 <td>{!! $date->format('l j H:i')  !!}</td>
    @endif
+
+   
+ 
+  </tr>
+
+    <tr>
+ <td>{!! Form::select('RL', array('default' => '-','0' => '0','1' => '1', '2' => '2','3' => '3','4' => '4','5' => '5','6' => '6','7' => '7','8' => '8','9' => '9'))!!}{!! $equipos[$partidos[8]->local]->nombre!!}  {!! HTML::image($equipos[$partidos[8]->local]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
+ <td>{!!Form::radio('j10', '2',false,array('id'=>'2','hidden'))!!}Marcador para desempate</td>   
+ <td>{!! Form::select('RV', array('default' => '-','0' => '0','1' => '1', '2' => '2','3' => '3','4' => '4','5' => '5','6' => '6','7' => '7','8' => '8','9' => '9'))!!}  {!! $equipos[$partidos[8]->visitante]->nombre!!} {!! HTML::image($equipos[$partidos[8]->visitante]->logourl, 'alt', array( 'width' => 25, 'height' => 25 )) !!} </td>
   </tr>
 </table>
-
-
-
 
 
 
