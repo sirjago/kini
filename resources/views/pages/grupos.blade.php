@@ -542,13 +542,15 @@ Nombre del Grupo:<li>{!! $grupos[0]->nombre!!}</li>
 <?php $aciertox  =0; ?>
 <?php $param1 = $miembro->id ; ?>
 
-<?php DB::select('CALL quini.TotalJornadaUser(?,?,@aciertox)',array($param2,$param1)); ?>
+<?php DB::select('CALL quini.DELETEtotal(?,?,@aciertox,@desempatex)',array($param2,$param1)); ?>
 <?php $results = DB::select('select @aciertox as aciertox'); ?>
+<?php $results2 = DB::select('select @desempatex as desempatex'); ?>
 <li>{!! $miembro->username !!}</li> <li>Aciertos {!!$results[0]->aciertox!!} </li> <br> 
 
 
 <?php $arrai[$z] = Collect($results[0]->aciertox); ?>
 <?php $usernam [$z] =Collect( $miembro->username ); ?>
+<?php $arrai2 [$z] =Collect( $results2[0]->desempatex ); ?>
 <?php $z  =$z+1; ?>
 
 @endforeach
@@ -556,10 +558,11 @@ Nombre del Grupo:<li>{!! $grupos[0]->nombre!!}</li>
 {{-- SORT de ambos arrays --}}
 <?php
 
-array_multisort($arrai, SORT_DESC ,$usernam );
+array_multisort($arrai2, SORT_DESC ,$usernam,$arrai );
 
 var_dump($arrai);
 var_dump($usernam);
+var_dump($arrai2);
 ?>
 
 <?php $arrai= new Illuminate\Support\Collection($arrai);?>
@@ -567,8 +570,14 @@ var_dump($usernam);
 {{-- Formato para mostrar datos --}}
 @foreach ($arrai as $arra)
 
+@if    ($arrai[$y] <> $arrai2[$y])
+   
+{!!$arrai[$y]->first()!!} {!!$usernam[$y]->first()!!}{!! HTML::image('images/copa2.png', 'alt', array( 'width' => 25, 'height' => 25 )) !!}<br>  
+@else
+   {!!$arrai[$y]->first()!!} {!!$usernam[$y]->first()!!}<br>  
+@endif
 
-{!!$arrai[$y]->first()!!} {!!$usernam[$y]->first()!!}<br>  
+
 <?php $y  =$y+1; ?>
 @endforeach
 <br> <br> <br> <br> 
