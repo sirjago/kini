@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 use App\grupos;
 use App\user;
+use App\Record;
 use Auth;
+use DB;
 use Input;
 use Redirect;
 use App\Http\Controllers\Controller;
@@ -160,6 +162,20 @@ class GruposController extends Controller {
 		return 'Failed' ;
 	
     }
+
+
+
+
+    public function general($id)
+    {
+      $general = DB::select('CALL quini.QuinielaGeneral');
+      		
+		 $user = User::all();
+       return view('pages.General',['Record' => $general,'user' => $user]);	
+      
+	
+    }
+
 
 
 }

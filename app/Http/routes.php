@@ -22,8 +22,8 @@ $date = DateTime::createFromFormat("d/m/Y", $string);
 echo strftime("%A",$date->getTimestamp());
 echo strftime("%A %d de %B del %Y %H",$date->getTimestamp());*/
 
-Date::setLocale('es');
-echo Date::now()->format('l j F Y H:i:s'); 
+    $general = DB::select('CALL quini.QuinielaGeneral');
+    dd($general);
 }
 );
 
@@ -73,7 +73,7 @@ Route::get('jornadas/showo/{id}/{jor}',['middleware' =>'auth', 'uses' =>'Jornada
 Route::delete('salir/{id}', array('as'=>'grupos/salir','uses'=>'GruposController@salir'));
 
 Route::get('grupos/dejar/{id}/{grupo}', array('as'=>'grupos/dejar','uses'=>'GruposController@dejar'));
-
+Route::get('grupos/general/{id}', array('as'=>'grupos.general','uses'=>'GruposController@general'));
 Route::get('grupos/crear/{id}', array('as'=>'grupos/crear','uses'=>'GruposController@create'));
 Route::get('grupos/unirse/{id}', 'GruposController@unirse');
 
