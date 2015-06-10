@@ -542,7 +542,7 @@ Nombre del Grupo:<li>{!! $grupos[0]->nombre!!}</li>
 <?php $aciertox  =0; ?>
 <?php $param1 = $miembro->id ; ?>
 
-<?php DB::select('CALL quini.DELETEtotal(?,?,@aciertox,@desempatex)',array($param2,$param1)); ?>
+<?php DB::select('CALL quini.TotalJornadaUser(?,?,@aciertox,@desempatex)',array($param2,$param1)); ?>
 <?php $results = DB::select('select @aciertox as aciertox'); ?>
 <?php $results2 = DB::select('select @desempatex as desempatex'); ?>
 <li>{!! $miembro->username !!}</li> <li>Aciertos {!!$results[0]->aciertox!!} </li> <br> 
@@ -572,7 +572,7 @@ var_dump($arrai2);
 
 @if    ($arrai[$y] <> $arrai2[$y])
    
-{!!$arrai[$y]->first()!!} {!!$usernam[$y]->first()!!}{!! HTML::image('images/copa2.png', 'alt', array( 'width' => 25, 'height' => 25 )) !!}<br>  
+{!!$arrai[$y]->first()!!} {!!$usernam[$y]->first()!!}{!! HTML::image('images/copa2.png', 'Criterio de Desempate', array( 'width' => 25, 'height' => 25 )) !!}<br>  
 @else
    {!!$arrai[$y]->first()!!} {!!$usernam[$y]->first()!!}<br>  
 @endif
