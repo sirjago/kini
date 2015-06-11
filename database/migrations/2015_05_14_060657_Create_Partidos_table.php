@@ -14,7 +14,7 @@ class CreatePartidosTable extends Migration {
 	{
 		Schema::create('partidos', function(Blueprint $table)
 		{
-		
+		$table->increments('id');
 			$table->integer("local");
 	        $table->integer("visitante");
 			 $table->integer("jornada");

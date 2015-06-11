@@ -19,6 +19,7 @@ class TablaRecord extends Migration {
 			$table->integer("jornada_id");
 			$table->integer("user_id");
 			$table->integer("total");
+			$table->integer("desempate");
 		});
 	}
 

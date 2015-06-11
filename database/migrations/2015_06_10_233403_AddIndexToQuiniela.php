@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDesempate extends Migration {
+class AddIndexToQuiniela extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddDesempate extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('Record', function(Blueprint $table)
+		Schema::table('Quiniela', function(Blueprint $table)
 		{
-				 $table->integer("desempate");
+			$table->index('id')->unique();
 		});
 	}
 
@@ -25,7 +25,7 @@ class AddDesempate extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('Record', function(Blueprint $table)
+		Schema::table('Quiniela', function(Blueprint $table)
 		{
 			//
 		});

@@ -13,6 +13,7 @@
 use Jenssegers\Date\Date;
 use App\user;
 use App\grupos;
+use App\quiniela;
 
 Route::get('/lolo', function()
 {
@@ -22,8 +23,13 @@ $date = DateTime::createFromFormat("d/m/Y", $string);
 echo strftime("%A",$date->getTimestamp());
 echo strftime("%A %d de %B del %Y %H",$date->getTimestamp());*/
 
-    $general = DB::select('CALL quini.QuinielaGeneral');
-    dd($general);
+    /*$general = DB::select('CALL quini.QuinielaGeneral');
+    dd($general);*/
+
+
+
+    $jornada = quiniela::whereUser_id(5)->wherejornada(10)->first();
+    dd($jornada);
 }
 );
 
@@ -64,7 +70,7 @@ Route::get('jornadas/edit/{id}/{jor}',array('as'=>'jornadas/edit','uses'=>'Jorna
 
 Route::post('jornadas/edit/',array('as'=>'jornadas/edit','uses'=>'JornadasController@edit'));
 
-Route::put('jornadas/{id}/{jor}',array('as'=>'jornadas/update','uses'=>'JornadasController@update'));
+Route::put('jornadas/{user_id}/{jor}',array('as'=>'jornadas/update','uses'=>'JornadasController@update'));
 
 Route::get('jornadas/showo/{id}/{jor}',array('as'=>'jornadas/showo','uses'=>'JornadasController@show'));
 

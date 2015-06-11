@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Addjuegos extends Migration {
+class CreateQuinielas extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,14 @@ class Addjuegos extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('quiniela', function(Blueprint $table)
+		Schema::create('quiniela', function(Blueprint $table)
 		{
+			
+			$table->timestamps();
+			$table->integer("jornada");
+			$table->integer("user_id");
+			$table->integer("juego1")->nullable();
+			$table->integer("juego2")->nullable();
 			$table->integer("juego3")->nullable();
 			$table->integer("juego4")->nullable();
 			$table->integer("juego5")->nullable();
@@ -21,6 +27,8 @@ class Addjuegos extends Migration {
 			$table->integer("juego7")->nullable();
 			$table->integer("juego8")->nullable();
 			$table->integer("juego9")->nullable();
+			$table->integer("RL")->nullable();
+	        $table->integer("RV")->nullable();
 		});
 	}
 
@@ -31,10 +39,7 @@ class Addjuegos extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('quiniela', function(Blueprint $table)
-		{
-			//
-		});
+		Schema::drop('quiniela');
 	}
 
 }

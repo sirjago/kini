@@ -19,6 +19,8 @@ class CreateResultadosTable extends Migration {
 			$table->integer("jornada");
 	        $table->integer("juego");
 			 $table->integer("resultado");
+			 $table->integer("ML");
+			  $table->integer("MV");
 		});
 	}
 
