@@ -152,7 +152,7 @@ class GruposController extends Controller {
 				$miembro = Grupos::find($grupo->first()->id)->users;
 			if($grupo->first()->pivot->owner == 1)
 			{
-				return view('pages.ConGrupoTotal',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
+				return view('pages.ConGruposTotal',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
 			}
 		           return view('pages.gruposTotal',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
 		  }  

@@ -3,10 +3,17 @@
 @section('content')
 
 
+Duenio GRUPOS
+<br><br><br><br>
+
+Nombre Del Grupo:<li>{!! $grupos[0]->nombre!!}</li>
+
+Clave del Grupo: <li>{!! $grupos[0]->clave!!}</li>
+
+GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 
 
 
-Nombre:<li>{!! $grupos[0]->nombre!!}</li>
 <nav>
   <ul class="pagination">
     
