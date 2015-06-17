@@ -1,6 +1,6 @@
 
 
-@extends('master')
+@extends('default')
 
 @section('content')
 <?php  use Jenssegers\Date\Date;   ?>
@@ -8,7 +8,7 @@
 <?php  Date::setLocale('es');  ?>
 
 
-
+<br><br><br><br><br><br><br><br>
 
 
 VALUE<li>+{!! $jornadas->RL!!}+</li><br><br>
@@ -1381,6 +1381,7 @@ Total de aciertos de la jornada {!!  $a !!}
 
   </ul>
 </nav>
+
 
 
    @endif

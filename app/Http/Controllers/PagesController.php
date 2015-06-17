@@ -2,7 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Auth;
+use Redirect;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller {
@@ -31,6 +32,8 @@ class PagesController extends Controller {
 	
 	public function register ()
 	{
+
+		if(Auth::check()) return Redirect::to('/admin');
 		return view('pages.register');
 		
 	}

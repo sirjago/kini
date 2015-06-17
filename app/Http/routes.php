@@ -14,22 +14,17 @@ use Jenssegers\Date\Date;
 use App\user;
 use App\grupos;
 use App\quiniela;
+use App\estado;
 
 Route::get('/lolo', function()
 {
-/*setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
-$string = "2015-05-14";
-$date = DateTime::createFromFormat("d/m/Y", $string);
-echo strftime("%A",$date->getTimestamp());
-echo strftime("%A %d de %B del %Y %H",$date->getTimestamp());*/
-
-    /*$general = DB::select('CALL quini.QuinielaGeneral');
-    dd($general);*/
 
 
 
-    $jornada = quiniela::whereUser_id(5)->wherejornada(10)->first();
-    dd($jornada);
+    //$jornada = quiniela::whereUser_id(5)->wherejornada(10)->first();
+       $user = User::find(1);
+    $estado = estado::whereEstadoId($user->estado)->whereMunicipioId($user->municipio)->first();
+    dd($estado);
 }
 );
 
@@ -61,7 +56,7 @@ dd($results[0]->aciertox);
 Route::get('/', 'PagesController@home');
 
 Route::get('about', 'PagesController@about');
-Route::get('register', 'PagesController@register');
+Route::get('/register',array('as' =>'register','uses'=> 'PagesController@register'));
 Route::get('user/{id}', 'PagesController@show');
 
 Route::post('jornadas/guardar/{jor}', array('as' =>'jornadas.guardar','uses'=>'JornadasController@guardar'));
@@ -103,7 +98,7 @@ Route::resource('users', 'UsersController');
 
 
 Route::get('login','SessionsController@create');
-Route::get('logout','SessionsController@destroy');
+Route::get('logout',array('as' =>'logout','uses'=>'SessionsController@destroy'));
 Route::resource('sessions', 'SessionsController');
 
 Route::get('admin',function()

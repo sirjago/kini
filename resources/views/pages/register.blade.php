@@ -1,7 +1,7 @@
 
 
 
-@extends('master')
+@extends('default')
 
 @section('content')
 
@@ -10,6 +10,7 @@
 @endforeach
 
 {!!Form::open(['route'=> 'users.store'])!!}
+<br><br><br><br>
 {!!Form::label('email')!!}<br>
 {!!Form::text('email')!!}<br>
 {!!Form::label('username')!!}<br>

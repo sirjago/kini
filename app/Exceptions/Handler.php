@@ -2,6 +2,7 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 
 class Handler extends ExceptionHandler {
 
@@ -36,6 +37,11 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+		 if ($e instanceof TokenMismatchException){
+            //redirect to form an example of how i handle mine
+            return redirect($request->fullUrl())->with('csrf_error',"Tu sesion ha expirado por favor , vuelve a loggearte");
+        //   return Redirect::route('logout')->with('message','Your session has expired. Please try logging in again.');
+		}
 		return parent::render($request, $e);
 	}
 

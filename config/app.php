@@ -146,6 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 'Barryvdh\Debugbar\ServiceProvider',
 'Jenssegers\Date\DateServiceProvider',
+ 'Laracasts\Flash\FlashServiceProvider',
 	],
 
 	/*
@@ -196,6 +197,7 @@ return [
          'Form' =>  'Illuminate\Html\FormFacade',
 		 'HTML'      => 'Illuminate\Html\HtmlFacade',
 		 'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		   'Flash' => 'Laracasts\Flash\Flash',
 	],
 
 ];

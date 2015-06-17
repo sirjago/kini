@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use  Carbon\Carbon;
 use Jenssegers\Date\Date;
 use Auth;
+use Flash;
 use Input;	
 use View;
 

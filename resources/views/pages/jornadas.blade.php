@@ -1,10 +1,10 @@
-@extends('master')
+@extends('default')
 
 @section('content')
 <?php  use Jenssegers\Date\Date;   ?>
 <?php  Date::setLocale('es');  ?>
 <?php $a=0; ?>
-
+<br><br><br><br><br><br>
 <li>{!! $jornadas!!}</li>
 <li>{!! $jor!!}</li>
 <li>{!! $equipos[0]->nombre!!}</li>
