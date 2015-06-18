@@ -9,9 +9,10 @@ use Input;
 use Flash;
 use Redirect;
 use App\user;
+use App\estado;
 use Hash;
 use Auth;
-
+use DB;
 
 class UsersController extends Controller {
 
@@ -23,8 +24,13 @@ class UsersController extends Controller {
 	{
 	
     $user = User::find(Auth::user()->id);
-    $estado = Estado::whereestadoId($user->estado)->WhereMunicipioId($user->municipio)->first();
-	return view('pages.perfil',['user' => $user]);
+     $estado = estado::whereEstadoId($user->estado)->whereMunicipioId($user->municipio)->first();
+       $ListaEstados =  array('' => 'Selecciona tu estado') +  DB::table('estados')->distinct()->lists('estado','estado_id');
+         $ListaMunicipios =   DB::table('estados')->distinct()->lists('Municipio','Municipio_id');
+         $Municipios = estado::whereEstadoId($user->estado)->lists('Municipio','Municipio_id');
+$users = DB::table('estados')->distinct()->get(['estado_id','estado']);
+
+	return view('pages.perfil',['user' => $user,'estado' => $estado,'ListaEstados' => $ListaEstados,'users' => $users,'Municipios' => $Municipios]);
 	}
 
 	

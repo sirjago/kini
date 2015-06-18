@@ -15,9 +15,54 @@
 @include ('flash::message')	
 
 @yield('content')
+
+
+
+
+
 </div>
-<script src="//code.jquery.com/jquery.js"></script>
+
+
+
+
+<script src="//code.jquery.com/jquery.js">
+
+  
+
+</script>
+<script >
+
+
+
+    
+
+</script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script >
+
+
+
+    
+
+
+jQuery(document).ready(function($){
+    $('#userselect').change(function(){
+      $.get("{{ url('api/dropdown')}}", 
+        { option: $(this).val() }, 
+        function(data) {
+          var model = $('#itemselect');
+          model.empty();
+ 
+          $.each(data, function(index, element) {
+               //   model.append("<option value='1'>" + municipio + "</option>");
+                  model.append("<option value='"+ index +"'>" + element + "</option>")
+                  // model.append("<option value='1'>" + element + "</option>")
+              });
+        });
+    });
+  });
+</script>
 <script> $('#flash-overlay-modal').modal();</script>
+
 </body>
 </html>

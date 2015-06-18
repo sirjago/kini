@@ -18,13 +18,9 @@ use App\estado;
 
 Route::get('/lolo', function()
 {
+ $ListaEstados =  array('' => 'Selecciona tu estado') +  DB::table('estados')->distinct()->lists('estado','estado_id');
 
-
-
-    //$jornada = quiniela::whereUser_id(5)->wherejornada(10)->first();
-       $user = User::find(1);
-    $estado = estado::whereEstadoId($user->estado)->whereMunicipioId($user->municipio)->first();
-    dd($estado);
+dd($ListaEstados);
 }
 );
 
@@ -48,6 +44,20 @@ dd($results[0]->aciertox);
 }
 
 	);
+
+
+Route::get('api/dropdown', function(){
+  $input = Input::get('option');
+	$municipio= estado::whereEstadoId($input)->lists('municipio','municipio_id');;
+	return Response::make($municipio);
+});
+
+
+Route::get('myroute','DropdownController@firstMethod');
+Route::get('loadsubcat/{id}','DropdownController@secondMethod');
+Route::get('verga','DropdownController@index');
+
+Route::get('/myurl/', ['as' => 'items.duplicate', 'uses' => 'DropdownController@duplicate']);
 
 
 

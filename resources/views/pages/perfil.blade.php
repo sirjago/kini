@@ -12,10 +12,12 @@
 
 <li>{!! $user!!}</li>
 
+<br><br><br><br>
+<li>{!! $user->estado !!}</li>
 {!!Form::open()!!}
 <br><br><br><br>
 {!!Form::label('Nombre')!!}<br>
-{!!Form::text('Nombre',$user->nombre)!!}<br>
+{!!Form::text('Nombre',$user->nombre)!!}<br><br>
 {!!Form::label('username')!!}<br>
 {!!Form::text('username',$user->username)!!}<br><br>
 {!!Form::label('Apellido')!!}<br>
@@ -23,15 +25,64 @@
 {!!Form::label('Fecha de nacimiento')!!}<br>
 {!!Form::text('fecha',$user->fecha)!!}<br> <br>
 {!!Form::label('Estado')!!}<br>
-{!! Form::select('Estado')!!}<br> <br>
+
+@if($user->estado ==0)
+<select id="userselect" name="userselect">
+    <option>Select User</option>
+    @foreach ($users as $usr)
+      <option value="{{ $usr->estado_id }}">{{ $usr->estado}}</option>
+    @endforeach
+   </select>
+<br> <br>
+
 {!!Form::label('Ciudad')!!}<br>
-{!! Form::select('Municipio')!!}<br> <br>
+   <select id="itemselect" name="itemselect">
+       <option>Please choose user first</option>
+
+ </select><br> <br>
+@else
+<select id="userselect" name="userselect">
+    <option>Select User</option>
+    @foreach ($users as $usr)
+      <option value="{{ $usr->estado_id }}">{{ $usr->estado}}</option>
+    @endforeach
+   </select>
+<br> <br>
+
+{!!Form::label('Ciudad')!!}<br>
+   <select id="itemselect" name="itemselect">
+       <option>Please choose user first</option>
+
+ </select>
+@endif
+
+
+
+
+
+
+
+<br> <br>
+{!!Form::label('Hincha de')!!}<br>
 {!! Form::select('Equipo Nacional')!!}<br> <br>
-{!!Form::label('Equipo Internacional')!!}<br>
+{!!Form::label('Equipo Internacional Favorito')!!}<br>
 {!!Form::text('Internacional',$user->Internacional)!!}<br> <br>
 
+
+{!! Form::select('Estado', $ListaEstados, 4,array('id' => 'estat'))!!}
+<br>
+{!!Form::label('Ciudad')!!}<br>
+{!! Form::select('Estado', $Municipios, 4,array('id' => 'estat'))!!}
+
+
 {!!Form::close()!!}
+
+
+
+
+
 @stop
+
 
 
 
