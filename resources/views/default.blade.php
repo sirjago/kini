@@ -38,11 +38,8 @@
 
 </script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <script >
-
-
-
-    
 
 
 jQuery(document).ready(function($){
@@ -58,10 +55,19 @@ jQuery(document).ready(function($){
                   model.append("<option value='"+ index +"'>" + element + "</option>")
                   // model.append("<option value='1'>" + element + "</option>")
               });
+         
         });
+ $.get("{{ url('api/selected')}}",  function(data){var toto =data.municipio; document.getElementById("itemselect").value = toto;  });
     });
+
   });
 </script>
+
+
+
+
+
+
 <script> $('#flash-overlay-modal').modal();</script>
 
 </body>

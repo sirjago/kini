@@ -30,7 +30,8 @@
 <select id="userselect" name="userselect">
     <option>Select User</option>
     @foreach ($users as $usr)
-      <option value="{{ $usr->estado_id }}">{{ $usr->estado}}</option>
+  <option value="{{ $usr->estado_id }}">{{ $usr->estado}}</option>
+   
     @endforeach
    </select>
 <br> <br>
@@ -38,24 +39,35 @@
 {!!Form::label('Ciudad')!!}<br>
    <select id="itemselect" name="itemselect">
        <option>Please choose user first</option>
-
  </select><br> <br>
+
+
 @else
 <select id="userselect" name="userselect">
-    <option>Select User</option>
+    <option>Selecciona tu estado</option>
     @foreach ($users as $usr)
+
+
+    @if($user->estado == $usr->estado_id)
+  <option value="{{ $usr->estado_id }}" Selected="selected">{{ $usr->estado}} </option>
+      @else
       <option value="{{ $usr->estado_id }}">{{ $usr->estado}}</option>
-    @endforeach
+    @endif
+
+   @endforeach
+
    </select>
 <br> <br>
-
 {!!Form::label('Ciudad')!!}<br>
-   <select id="itemselect" name="itemselect">
-       <option>Please choose user first</option>
+ 
+
+   <select id="itemselect" name="itemselect" >
+       <option>Selecciona tu ciudad</option>
 
  </select>
-@endif
 
+ 
+@endif
 
 
 

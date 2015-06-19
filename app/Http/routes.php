@@ -52,6 +52,14 @@ Route::get('api/dropdown', function(){
 	return Response::make($municipio);
 });
 
+Route::get('api/selected', function(){
+
+  $idm= user::whereId(Auth::user()->id)->select('municipio')->first();
+  return Response::make($idm);
+});
+
+
+
 
 Route::get('myroute','DropdownController@firstMethod');
 Route::get('loadsubcat/{id}','DropdownController@secondMethod');
