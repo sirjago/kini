@@ -43,6 +43,7 @@
 
 
 jQuery(document).ready(function($){
+   $.get("{{ url('api/selected')}}",  function(data){var toto =data.municipio; document.getElementById("itemselect").value = toto;  });
     $('#userselect').change(function(){
       $.get("{{ url('api/dropdown')}}", 
         { option: $(this).val() }, 

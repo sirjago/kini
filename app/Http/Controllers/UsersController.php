@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
+use App\equipos;
 use Input;
 use Flash;
 use Redirect;
@@ -22,7 +23,10 @@ class UsersController extends Controller {
 	
 	public function index ()
 	{
-	
+	// Agregar validacion si esta loggeado seguir sino ir al login.
+			if(Auth::check()) {
+		$equipos =  array('' => 'Selecciona tu equipo') + DB::table('hinchaequipo')->lists('equipo','id');
+			$inter =  array('' => 'Selecciona Equipo ') + DB::table('fanequipo')->lists('equipo','id');
     $user = User::find(Auth::user()->id);
      $estado = estado::whereEstadoId($user->estado)->whereMunicipioId($user->municipio)->first();
        $ListaEstados =  array('' => 'Selecciona tu estado') +  DB::table('estados')->distinct()->lists('estado','estado_id');
@@ -30,7 +34,10 @@ class UsersController extends Controller {
          $Municipios = estado::whereEstadoId($user->estado)->lists('Municipio','Municipio_id');
 $users = DB::table('estados')->distinct()->get(['estado_id','estado']);
 
-	return view('pages.perfil',['user' => $user,'estado' => $estado,'ListaEstados' => $ListaEstados,'users' => $users,'Municipios' => $Municipios]);
+	return view('pages.perfil',['user' => $user,'estado' => $estado,'ListaEstados' => $ListaEstados,'users' => $users,'Municipios' => $Municipios,'equipos' => $equipos,'inter' => $inter]);
+	}
+	else return Redirect::to('/login');
+
 	}
 
 	
