@@ -24,11 +24,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{Auth::user()->username}} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ URL::route('users.index')}}">Mi Cuenta</a></li>
-            <li><a href="#">Mi Quiniela</a></li>
-            <li><a href="#">Saldo</a></li>
+            <li><a href="{{ URL::route('users.index')}}">Mis Datos</a></li>
+            <li><a href="{{ URL::route('jornadas/showo',array(Auth::user()->id, 1)) }}">Mi Quiniela</a></li>
+            <li><a href="{{ URL::route('cuentas.show',array(Auth::user()->id)) }}">Mis Cuentas</a></li>
             <li class="divider"></li>
-            <li><a href="#">Grupos Privados</a></li>
+            <li><a href="{{ URL::route('grupos.show',array(Auth::user()->id, 1)) }}">Grupos Privados</a></li>
             <li><a href="#">Quinielas Generales</a></li>
             <li class="divider"></li>
             <li><a href="{{ URL::route('logout')}}">Logout</a></li>

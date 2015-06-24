@@ -5,6 +5,9 @@
 
 @section('content')
 
+
+
+
 @foreach($errors->all() as $error)
 <li>{!! $error!!}</li>
 @endforeach
@@ -15,16 +18,17 @@
 
 <br><br><br><br>
 <li>{!! $user->estado !!}</li>
-{!!Form::open()!!}
+
+{!!   Form::model($user, array('route' => array('user/update', Auth::user()->id), 'method' => 'PUT'))           !!}
 <br><br><br><br>
-{!!Form::label('Nombre')!!}<br>
-{!!Form::text('Nombre',$user->nombre)!!}<br><br>
 {!!Form::label('username')!!}<br>
 {!!Form::text('username',$user->username)!!}<br><br>
-{!!Form::label('Apellido')!!}<br>
+{!!Form::label('Nombre ')!!}{!!Form::label('Apellido')!!}<br>
+{!!Form::text('nombre',$user->nombre)!!}
+
 {!!Form::text('apellido',$user->apellido)!!}<br> <br>
 {!!Form::label('Fecha de nacimiento')!!}<br>
-{!!Form::text('fecha',$user->fecha)!!}<br> <br>
+{!! Form::text('date', $user->fecha, array('id' => 'datepicker')) !!}<br> <br>
 {!!Form::label('Estado')!!}<br>
 
 @if($user->estado ==0)
@@ -70,7 +74,7 @@
 
  </select>
  @else
-
+<br>{!!Form::label('Ciudad')!!}<br>
 {!! Form::select('itemselect', $Municipios, $user->municipio,array('id' => 'itemselect'))!!}
 
  @endif
@@ -86,9 +90,9 @@
 <br> <br>
 {!!Form::label('Hincha de')!!}<br>
 @if($user->equipo ==0)
-{!! Form::select('Equipo Nacional',$equipos)!!}<br> <br>
+{!! Form::select('EquipoNacional',$equipos)!!}<br> <br>
 @else
-{!! Form::select('Equipo Nacional',$equipos,$user->equipo)!!}<br> <br>
+{!! Form::select('EquipoNacional',$equipos,$user->equipo)!!}<br> <br>
 @endif
 
 
@@ -99,7 +103,6 @@
 @if($user->inter == 0)
 {!! Form::select('EquipoInter',$inter,null,array('id' => 'EquipoInt','onChange' => 'changetextbox();') )!!}<br> <br>
 
-
 <script type="text/javascript">
 function changetextbox()
 {
@@ -108,30 +111,57 @@ function changetextbox()
         document.getElementById("otro").removeAttribute('disabled') ;
     } else {
       
-        document.getElementById("otro").setAttribute("disabled", false);
+        document.getElementById("otro").setAttribute("disabled", true);
     }
 }
 </script>
 
 
 
-@else
-{!! Form::select('EquipoInter',$inter,$user->inter)!!}<br> <br>
 
+@else
+{!! Form::select('EquipoInter',$inter,$user->inter,array('id' => 'EquipoInt','onChange' => 'changetextbox();'))!!}<br> <br>
+<script type="text/javascript">
+function changetextbox()
+{
+    if (document.getElementById("EquipoInt").value === "27") {
+        
+        document.getElementById("otro").removeAttribute('disabled') ;
+    } else {
+       document.getElementById("otro").value = '';
+        document.getElementById("otro").setAttribute("disabled", false);
+
+
+    }
+}
+</script>
 
 
 
 @endif
+
+
+
 
 @if($user->internacional == null)
 {!!Form::label('Otro Equipo')!!}<br>
-{!!Form::text('Otro',null,array('id' => 'otro'))!!}<br><br>
+{!!Form::text('otro',null,array('id' => 'otro', 'disabled'))!!}<br><br>
 @else
 {!!Form::label('Otro Equipo')!!}<br>
-{!!Form::text('Otro',$user->internacional,array('id' => 'otro'))!!}<br><br>
+{!!Form::text('otro',$user->internacional,array('id' => 'otro'))!!}<br><br>
 @endif
 
 
+
+
+
+
+
+
+
+
+<br><br><br><br>
+{!!Form::submit('Actualizar') !!}<br><br>
 
 
 {!!Form::close()!!}

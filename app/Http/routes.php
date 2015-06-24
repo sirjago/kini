@@ -15,12 +15,14 @@ use App\user;
 use App\grupos;
 use App\quiniela;
 use App\estado;
+use App\Saldo;
 
 Route::get('/lolo', function()
 {
- $ListaEstados =  array('' => 'Selecciona tu estado') +  DB::table('estados')->distinct()->lists('estado','estado_id');
+   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array(1) );
+      $saldox = DB::select('select @saldoto as saldoto');     
 
-dd($ListaEstados);
+dd($saldox);
 }
 );
 
@@ -76,6 +78,12 @@ Route::get('/', 'PagesController@home');
 Route::get('about', 'PagesController@about');
 Route::get('/register',array('as' =>'register','uses'=> 'PagesController@register'));
 Route::get('user/{id}', 'PagesController@show');
+Route::put('user/update/{user_id}/',array('as'=>'user/update','uses'=>'UsersController@update'));
+
+Route::get('cuenta/show/{id}/', array('as' =>'cuentas.show','uses'=>'CuentasController@show'));
+Route::get('cuenta/show/{id}/',['middleware' =>'auth', 'uses' =>'CuentasController@show']);
+Route::get('cuenta/show/banco/{id}/', array('as' =>'bancos.show','uses'=>'CuentasController@banco'));
+
 
 Route::post('jornadas/guardar/{jor}', array('as' =>'jornadas.guardar','uses'=>'JornadasController@guardar'));
 

@@ -158,7 +158,7 @@ else{ $jornada->RV =  Input::get('RV');
 		 return view('pages.editjornadas',['jornadas' => $jornada,'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados])->with('jor',$jor);
 		} 	return  view('pages.jornadas',['jornadas' => $jornada,'partidos' => $partidos,'equipos' => $equipos,'resultados' => $resultados])->with('jor',$jor);
 		}
-		return 'Failedo :(';
+		return 'Failedox :(';
 	}
 
 	/**

@@ -69,6 +69,54 @@ $users = DB::table('estados')->distinct()->get(['estado_id','estado']);
  
 	}
 	
+
+public function update($user_id)
+	{
+		
+		$record = user::whereId($user_id)->first();
+
+
+
+     
+       $record->nombre =  Input::get('nombre');
+         $record->apellido =  Input::get('apellido');
+         $record->estado =  Input::get('userselect');
+         $record->municipio =  Input::get('itemselect');
+         // $birthdate =  Input::get('date');
+         $record->equipo =  Input::get('EquipoNacional');
+         $record->inter =  Input::get('EquipoInter');
+
+           $convert_date = date("Y-m-d", strtotime(Input::get('date')));
+           $record->fecha =  $convert_date;
+
+
+
+
+         if ( $record->inter == 27){
+         	 $record->internacional = Input::get('Otro');}
+
+
+       
+        $record->save();
+
+$equipos =  array('' => 'Selecciona tu equipo') + DB::table('hinchaequipo')->lists('equipo','id');
+			$inter =  array('' => 'Selecciona Equipo ') + DB::table('fanequipo')->lists('equipo','id');
+    $user = User::find(Auth::user()->id);
+     $estado = estado::whereEstadoId($user->estado)->whereMunicipioId($user->municipio)->first();
+       $ListaEstados =  array('' => 'Selecciona tu estado') +  DB::table('estados')->distinct()->lists('estado','estado_id');
+         $ListaMunicipios =   DB::table('estados')->distinct()->lists('Municipio','Municipio_id');
+         $Municipios = estado::whereEstadoId($user->estado)->lists('Municipio','Municipio_id');
+$users = DB::table('estados')->distinct()->get(['estado_id','estado']);
+
+ flash::overlay('Tus datos se han actualizado','Guardando...'); 
+	return view('pages.perfil',['user' => $user,'estado' => $estado,'ListaEstados' => $ListaEstados,'users' => $users,'Municipios' => $Municipios,'equipos' => $equipos,'inter' => $inter]);
+	
+
+		//return view('pages.perfil');
+	}
+
+
+
 	
 	}
 
