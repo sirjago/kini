@@ -6,6 +6,7 @@ use Auth;
 use DB;
 use App\Saldo;
 use App\user;
+use Input;
 use Redirect;
 use Illuminate\Http\Request;
 
@@ -62,7 +63,39 @@ class CuentasController extends Controller {
 		}
 		return 'Failedox  not logged :(';
 	}
-	
+
+public function update($user_id)
+	{
+
+	$cuenta = user::whereId($user_id)->first();
+
+
+
+     
+       $cuenta->nombrecompleto =  Input::get('completo');
+         $temp =  Input::get('tipo');
+         $cuenta->tipocuenta =  Input::get('tipo');
+         $temp1 =  Input::get('banco');
+         $cuenta->municipio =  Input::get('itemselect');
+        
+
+         if ( $temp == "1"){
+         	 $cuenta->cuentaclabe = Input::get('clabe');}
+         	 else $cuenta->cuentatarjeta = Input::get('cuenta');
+
+              if ( $temp1 == "10"){
+         	 $cuenta->otrobanco = Input::get('otro');}
+         	  else $cuenta->banco = Input::get('banco');
+
+
+        
+
+
+       
+        $cuenta->save();
+        return 'lolo';
+	}
+
 	}
 
 

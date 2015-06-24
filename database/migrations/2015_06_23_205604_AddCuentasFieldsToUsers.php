@@ -14,11 +14,12 @@ class AddCuentasFieldsToUsers extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-	           $table->integer('tipocuenta');
-				$table->string('cuentaclabe,18');
-				$table->string('cuentatarjeta,25');
-				$table->string('nombrecompleto,100');
-					$table->string('banco,30');
+	           $table->integer('tipocuenta')->nullable();
+				$table->string('cuentaclabe',18)->nullable();
+				$table->string('cuentatarjeta',25')->nullable();
+				$table->string('nombrecompleto',100)->nullable();
+					$table->string('banco',30)->nullable();
+					$table->string('otrobanco',30)->nullable();
 		});
 	}
 
