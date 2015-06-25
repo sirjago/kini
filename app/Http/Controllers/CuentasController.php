@@ -2,19 +2,22 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\GuardarBancoRequest;
+
 use Auth;
 use DB;
 use App\Saldo;
 use App\user;
 use Input;
 use Redirect;
-use Illuminate\Http\Request;
 
 class CuentasController extends Controller {
 	
 	public function __construct()
     {
         //$this->middleware('csrf');
+
         $this->middleware('auth', ['only' => 'show']);
 	
     }
@@ -55,16 +58,21 @@ class CuentasController extends Controller {
 
 		public function banco ($id)
 	{
+		if(Auth::check()) {
 			if(Auth::user()->id== $id) {
+				
 		$user = User::find(Auth::user()->id);
 	
          return   view('pages.bancos',['user' => $user ]);
-		
+			
 		}
 		return 'Failedox  not logged :(';
+			}else return Redirect::to('/login');
 	}
 
-public function update($user_id)
+
+
+public function update($user_id,GuardarBancoRequest $request)
 	{
 
 	$cuenta = user::whereId($user_id)->first();
@@ -75,25 +83,34 @@ public function update($user_id)
        $cuenta->nombrecompleto =  Input::get('completo');
          $temp =  Input::get('tipo');
          $cuenta->tipocuenta =  Input::get('tipo');
+        // $cuenta->tipocuenta = Input::old('tipo', $user->tipo);
          $temp1 =  Input::get('banco');
-         $cuenta->municipio =  Input::get('itemselect');
+         
         
 
          if ( $temp == "1"){
-         	 $cuenta->cuentaclabe = Input::get('clabe');}
-         	 else $cuenta->cuentatarjeta = Input::get('cuenta');
+         	 $cuenta->cuentaclabe = Input::get('clabehidden');
+         	 //$cuenta->cuentaclabe = Input::get('bank');
+         	 $cuenta->cuentatarjeta = Input::get('cuentahidden');
+         	}
+         	 else $cuenta->cuentatarjeta = Input::get('cuentahidden');
+         	  $cuenta->cuentaclabe = Input::get('clabehidden');
 
               if ( $temp1 == "10"){
-         	 $cuenta->otrobanco = Input::get('otro');}
+         	 $cuenta->otrobanco = Input::get('otro');
+            $cuenta->banco = "10";
+         	}
          	  else $cuenta->banco = Input::get('banco');
 
 
         
 
 
-       
         $cuenta->save();
         return 'lolo';
+
+     // return Redirect::to(bancos.show',array(Auth::user()->id)); 
+     return Redirect::route('bancos.show',array(Auth::user()->id));
 	}
 
 	}
