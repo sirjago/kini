@@ -9,7 +9,7 @@
 
 <a class="btn btn-success" href="{{ URL::route('grupos/dejar',array(Auth::user()->id)) }}" role="button">Aviso de Deposito</a>
 
-<a class="btn btn-success" href="{{ URL::route('grupos/dejar',array(Auth::user()->id)) }}" role="button">Retirar</a>
+<a class="btn btn-success" href="{{ URL::route('cuentas.retiro',array(Auth::user()->id)) }}" role="button">Retirar</a>
 
 <a class="btn btn-success" href="{{ URL::route('bancos.show',array(Auth::user()->id)) }}" role="button">Cuenta Bancaria</a>
 

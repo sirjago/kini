@@ -29,33 +29,48 @@
 function changebank()
 {
     if (document.getElementById("account").value === "1") {
-        
+
          document.getElementById("bank").removeAttribute('disabled') ;
          document.getElementById("bank2").value = "";
          document.getElementById("bank2").setAttribute("disabled", true);
-          document.getElementById("bank2hidden").value = "0000000000000000";
+         
+
       
     } else {
+          
        document.getElementById("bank2").removeAttribute('disabled') ;
          document.getElementById("bank").value = "";
          document.getElementById("bank").setAttribute("disabled", true);
-        document.getElementById("bankhidden").value = "000000000000000000";
+       
+       
+
+
+
     }
 }
 </script>
 
-
+@if($user->cuentaclabe == null)
 {!!Form::hidden('clabehidden','null',array("id" => 'bankhidden'))!!}
+@else {!!Form::hidden('clabehidden',$user->cuentaclabe,array("id" => 'bankhidden'))!!}
+
+@endif
+
+@if($user->cuentatarjeta == null)
 {!!Form::hidden('cuentahidden','null',array("id" => 'bank2hidden'))!!}
+@else {!!Form::hidden('cuentahidden',$user->cuentatarjeta,array("id" => 'bank2hidden'))!!}
+
+@endif
+
 
 
 
 <br>
 @if($user->tipocuenta == null)
 {!!Form::label('CLABE')!!}<br>
-{!!Form::text('clabe',$user->cuentaclabe,array("id" => 'bank',"size" => '18',"maxlength" => '18', 'disabled'))!!}<br> 
+{!!Form::text('clabe',$user->cuentaclabe,array("id" => 'bank',"size" => '18',"maxlength" => '18', 'disabled','onBlur' => 'changeFields();'))!!}<br> 
 {!!Form::label('No. de Cuenta/Tarjeta')!!}<br>
-{!!Form::text('cuenta',$user->cuentatarjeta,array("id" => 'bank2',"size" => '16',"maxlength" => '16', 'disabled'))!!}<br> <br>
+{!!Form::text('cuenta',$user->cuentatarjeta,array("id" => 'bank2',"size" => '16',"maxlength" => '16', 'disabled','onBlur' => 'changeFields();'))!!}<br> <br>
 @elseif($user->tipocuenta == 1)
 {!!Form::label('CLABE')!!}<br>
 {!!Form::text('clabe',$user->cuentaclabe,array("id" => 'bank',"size" => '18',"maxlength" => '18','onBlur' => 'changeFields();'))!!}<br> 
@@ -63,7 +78,7 @@ function changebank()
 {!!Form::text('cuenta',null,array("id" => 'bank2',"size" => '16',"maxlength" => '16', 'disabled','onBlur' => 'changeFields();'))!!}<br> <br>
 @else
 {!!Form::label('CLABE')!!}<br>
-{!!Form::text('clabe',$user->cuentaclabe,array("id" => 'bank',"size" => '18',"maxlength" => '18', 'disabled'))!!}<br> 
+{!!Form::text('clabe',null,array("id" => 'bank',"size" => '18',"maxlength" => '18', 'disabled','onBlur' => 'changeFields();'))!!}<br> 
 {!!Form::label('No. de Cuenta/Tarjeta')!!}<br>
 {!!Form::text('cuenta',$user->cuentatarjeta,array("id" => 'bank2',"size" => '16',"maxlength" => '16','onBlur' => 'changeFields();'))!!}<br> <br>
 @endif
@@ -85,7 +100,7 @@ function changebank()
 {!!Form::label('Banco')!!}<br>
 
 @if($user->banco == 0)
-{!! Form::select('banco', array('default' => 'Selecciona tu banco','Banamex' => 'Banamex','BBVA BANCOMER' => 'BBVA BANCOMER', 'BANORTE' => 'BANORTE','HSBC' => 'HSBC','SANTANDER' => 'SANTANDER','SCOTIABANK' => 'SCOTIABANK','BANCOPPEL' => 'BANCOPPEL','BANCO AZTECA' => 'BANCO AZTECA','10' => 'OTRO BANCO'),null,array('id' => 'Equipo','onChange' => 'changetextbox();'))!!}
+{!! Form::select('banco', array('default' => 'Selecciona tu banco','Banamex' => 'Banamex','BBVA BANCOMER' => 'BBVA BANCOMER', 'BANORTE' => 'BANORTE','HSBC' => 'HSBC','SANTANDER' => 'SANTANDER','SCOTIABANK' => 'SCOTIABANK','BANCOPPEL' => 'BANCOPPEL','BANCO AZTECA' => 'BANCO AZTECA','10' => 'OTRO BANCO'),null,array('id' => 'Equipo','onChange' => 'changetextbox();','onBlur' => 'changeFields();'))!!}
 <br> <br>
 
 <script type="text/javascript">
@@ -105,7 +120,7 @@ function changetextbox()
 
 
 @else
-{!! Form::select('banco', array('default' => 'Selecciona tu banco','Banamex' => 'Banamex','BBVA BANCOMER' => 'BBVA BANCOMER', 'BANORTE' => 'BANORTE','HSBC' => 'HSBC','SANTANDER' => 'SANTANDER','SCOTIABANK' => 'SCOTIABANK','BANCOPPEL' => 'BANCOPPEL','BANCO AZTECA' => 'BANCO AZTECA','10' => 'OTRO BANCO'),$user->banco,array('id' => 'Equipo','onChange' => 'changetextbox();'))!!}
+{!! Form::select('banco', array('default' => 'Selecciona tu banco','Banamex' => 'Banamex','BBVA BANCOMER' => 'BBVA BANCOMER', 'BANORTE' => 'BANORTE','HSBC' => 'HSBC','SANTANDER' => 'SANTANDER','SCOTIABANK' => 'SCOTIABANK','BANCOPPEL' => 'BANCOPPEL','BANCO AZTECA' => 'BANCO AZTECA','10' => 'OTRO BANCO'),$user->banco,array('id' => 'Equipo','onChange' => 'changetextbox();','onBlur' => 'changeFields();'))!!}
 <br> <br>
 <script type="text/javascript">
 function changetextbox()
@@ -151,29 +166,42 @@ function changetextbox()
 
 
 <br><br><br><br>
-{!!Form::submit('Actualizar',array('id' => 'account')) !!}<br><br>
+{!!Form::submit('Actualizar',array('id' => 'accountr')) !!}<br><br>
 
 
 @foreach($errors->all() as $error)
 <li>{!! $error!!}</li>
 @endforeach
 
-{!!Form::close()!!}
+
+
 <script type="text/javascript">
 function changeFields()
 {
     if (document.getElementById("account").value === "1") {
            document.getElementById("bank2hidden").value = '0000000000000000';
            document.getElementById("bankhidden").value = document.getElementById("bank").value;
+           if( document.getElementById("bank").value === ""){
+            document.getElementById("bankhidden").value = "";
+           }
+           else {document.getElementById("bankhidden").value = document.getElementById("bank").value;}
 
     } else {
        document.getElementById("bankhidden").value = '000000000000000000';
        document.getElementById("bank2hidden").value =  document.getElementById("bank2").value;
+       
 
+     if( document.getElementById("bank2").value === ""){
+      document.getElementById("bank2hidden").value = "";
+       }
+           else {    document.getElementById("bank2hidden").value = document.getElementById("bank2").value;}
 
     }
 }
 </script>
+
+{!!Form::close()!!}
+
 
 
 

@@ -24,7 +24,8 @@ class GuardarBancoRequest extends Request {
 	{
 		return [
 			'clabehidden'=> 'digits:18|required:users' ,
-			'cuentahidden'=> 'digits:16|required:users' ,
+			'cuentahidden'=> 'required:users' ,
+				'banco'=> 'required|not_in:default',
 	     	
 		];
 	}
@@ -36,6 +37,7 @@ class GuardarBancoRequest extends Request {
 		'clabehidden.required'=> 'Ingresa la cuenta CLABE',
 			'cuentahidden.digits'=> 'El numero de tarjeta tiene que ser de 16 numeros exactamente',
 				'cuentahidden.required'=> 'Ingresa el numero de tarjeta',
+							'banco.not_in'=> 'Selecciona un banco',
 			
 		];
 	}

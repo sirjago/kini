@@ -75,11 +75,9 @@ class CuentasController extends Controller {
 public function update($user_id,GuardarBancoRequest $request)
 	{
 
+
 	$cuenta = user::whereId($user_id)->first();
 
-
-
-     
        $cuenta->nombrecompleto =  Input::get('completo');
          $temp =  Input::get('tipo');
          $cuenta->tipocuenta =  Input::get('tipo');
@@ -103,15 +101,28 @@ public function update($user_id,GuardarBancoRequest $request)
          	  else $cuenta->banco = Input::get('banco');
 
 
-        
-
-
         $cuenta->save();
-        return 'lolo';
+        //return 'lolo';
 
      // return Redirect::to(bancos.show',array(Auth::user()->id)); 
      return Redirect::route('bancos.show',array(Auth::user()->id));
 	}
+
+
+	public function retiro ($id)
+	{
+			if(Auth::user()->id== $id) {
+		$user =  User::whereId($id)->get();
+		   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($id) );
+		  $saldox = DB::select('select @saldoto as saldoto');                    
+         return   view('pages.retiros',['user' => $user,'saldox' => $saldox  ]);
+		//return 'redone';
+		}
+		return 'Failedox  not logged :(';
+	}
+
+
+
 
 	}
 
