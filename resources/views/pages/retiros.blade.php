@@ -5,9 +5,9 @@
 
 @section('content')
 <br><br><br><br>
-<a class="btn btn-success" href="{{ URL::route('bancos.show',array(Auth::user()->id)) }}" role="button">Depositar</a>
+<a class="btn btn-success" href="{{ URL::route('cuentas.datos') }}" role="button">Depositar</a>
 
-<a class="btn btn-success" href="{{ URL::route('grupos/dejar',array(Auth::user()->id)) }}" role="button">Aviso de Deposito</a>
+<a class="btn btn-success" href="{{ URL::route('cuentas.deposito',array(Auth::user()->id)) }}" role="button">Aviso de Deposito</a>
 
 <a class="btn btn-success" href="{{ URL::route('cuentas.show',array(Auth::user()->id)) }}" role="button">Mis Cuentas</a>
 
@@ -98,11 +98,31 @@
 <br><br>
 Por favor ingresa el monto a retirar de tu saldo.<br><br>
   {!!Form::label('monto a retirar')!!}
-{!!Form::text('monto')!!}<br><br>
+{!!Form::text('monto',null,array('id' => 'montox','onBlur' => 'SaldoChange();'))!!}<br><br>
 
 
 @endif
 
+<script type="text/javascript">
+function SaldoChange()
+{
+   var Salx = '<?php echo $saldox[0]->saldoto; ?>';
+   var Salx2 = document.getElementById("montox").value;
+    if ( parseInt(Salx2)>parseInt(Salx)) {
+
+        alert('El monto a retirar es mayor al disponible en saldo');
+        document.getElementById("montox").value = '';
+             document.getElementById("enviar").setAttribute("disabled", true);
+    } 
+else {
+ document.getElementById("enviar").removeAttribute('disabled') ;
+    }
+}
+</script>
+
+
+
+{!!Form::submit('Actualizar',array('id' => 'enviar','disabled')) !!}<br><br>
 @stop
 
 

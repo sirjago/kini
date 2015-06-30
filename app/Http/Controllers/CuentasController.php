@@ -4,10 +4,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\GuardarBancoRequest;
-
+use Flash;
 use Auth;
 use DB;
 use App\Saldo;
+use App\deposito;
 use App\user;
 use Input;
 use Redirect;
@@ -83,7 +84,6 @@ public function update($user_id,GuardarBancoRequest $request)
          $cuenta->tipocuenta =  Input::get('tipo');
         // $cuenta->tipocuenta = Input::old('tipo', $user->tipo);
          $temp1 =  Input::get('banco');
-         
         
 
          if ( $temp == "1"){
@@ -111,6 +111,7 @@ public function update($user_id,GuardarBancoRequest $request)
 
 	public function retiro ($id)
 	{
+			if(Auth::check()) {
 			if(Auth::user()->id== $id) {
 		$user =  User::whereId($id)->get();
 		   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($id) );
@@ -120,8 +121,63 @@ public function update($user_id,GuardarBancoRequest $request)
 		}
 		return 'Failedox  not logged :(';
 	}
+else return Redirect::to('/login');
+}
 
 
+
+
+public function deposito ()
+	{
+			if(Auth::check()) {
+			
+		$deposito =  new deposito;
+			  $deposito->referencia = Input::get('referencia');
+		 $tipodepo = Input::get('tipodeposito');
+		 if($tipodepo == 1) {
+
+		 	 $deposito->banco = 'Saldazo';
+		 }else  $deposito->banco = 'HSBC';
+
+ $convert_date = date("Y-m-d", strtotime(Input::get('fechadeposito')));
+           $deposito->fecha_solicitud =  $convert_date;
+	 $deposito->monto = Input::get('abono');
+	 $deposito->status = 0;
+	 $deposito->user_id = Auth::user()->id;
+  $deposito->save();
+
+   flash::overlay('Tu notificacion de deposito ha sido recibida con exito'); 
+     return Redirect::route('cuentas.show',array(Auth::user()->id));
+		
+	}
+else return Redirect::to('/login');
+}
+
+
+
+public function datos ()
+	{
+			if(Auth::check()) {
+			
+		                 
+         return   view('pages.datosdeposito');
+
+		
+	}
+else return Redirect::to('/login');
+}
+
+public function notify ($id)
+	{
+			if(Auth::check()) {
+			
+		       $notify = deposito::whereUser_id($id)->whereStatus(0)->get();          
+         return   view('pages.deposito',['notify' => $notify]);
+
+		
+	}
+else return Redirect::to('/login');
+}
 
 
 	}

@@ -33,7 +33,8 @@ function changebank()
          document.getElementById("bank").removeAttribute('disabled') ;
          document.getElementById("bank2").value = "";
          document.getElementById("bank2").setAttribute("disabled", true);
-         
+             document.getElementById("Equipo").removeAttribute('disabled') ;
+         document.getElementById("Equipo").selectedIndex =  0;
 
       
     } else {
@@ -41,8 +42,13 @@ function changebank()
        document.getElementById("bank2").removeAttribute('disabled') ;
          document.getElementById("bank").value = "";
          document.getElementById("bank").setAttribute("disabled", true);
-       
-       
+         document.getElementById("Equipo").removeAttribute('disabled') ;
+         document.getElementById("Equipo").selectedIndex =  0;
+       if (document.getElementById("account").value === "2") { 
+         document.getElementById("Equipo").selectedIndex =  1;
+document.getElementById("Equipo").setAttribute("disabled", true);
+
+       }
 
 
 

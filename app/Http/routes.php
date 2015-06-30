@@ -85,6 +85,9 @@ Route::get('cuenta/show/{id}/',['middleware' =>'auth', 'uses' =>'CuentasControll
 Route::get('cuenta/show/banco/{id}/', array('as' =>'bancos.show','uses'=>'CuentasController@banco'));
 Route::put('cuenta/update/{user_id}/', array('as' =>'cuentas.update','uses'=>'CuentasController@update'));
 Route::get('cuenta/retiro/{user_id}/', array('as' =>'cuentas.retiro','uses'=>'CuentasController@retiro'));
+Route::get('cuenta/datos/', array('as' =>'cuentas.datos','uses'=>'CuentasController@datos'));
+Route::post('cuenta/deposito/', array('as' =>'cuentas.deposito','uses'=>'CuentasController@deposito'));
+Route::get('cuenta/notify/{id}/', array('as' =>'cuentas.notify','uses'=>'CuentasController@notify'));
 
 Route::post('jornadas/guardar/{jor}', array('as' =>'jornadas.guardar','uses'=>'JornadasController@guardar'));
 

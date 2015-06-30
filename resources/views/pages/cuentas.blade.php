@@ -5,9 +5,9 @@
 
 @section('content')
 <br><br><br><br>
-<a class="btn btn-success" href="{{ URL::route('bancos.show',array(Auth::user()->id)) }}" role="button">Depositar</a>
+<a class="btn btn-success" href="{{ URL::route('cuentas.datos') }}" role="button">Depositar</a>
 
-<a class="btn btn-success" href="{{ URL::route('grupos/dejar',array(Auth::user()->id)) }}" role="button">Aviso de Deposito</a>
+<a class="btn btn-success" href="{{ URL::route('cuentas.notify',array(Auth::user()->id)) }}" role="button">Aviso de Deposito</a>
 
 <a class="btn btn-success" href="{{ URL::route('cuentas.retiro',array(Auth::user()->id)) }}" role="button">Retirar</a>
 
