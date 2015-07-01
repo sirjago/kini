@@ -16,13 +16,15 @@ use App\grupos;
 use App\quiniela;
 use App\estado;
 use App\Saldo;
+use App\deposito;
 
 Route::get('/lolo', function()
 {
-   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array(1) );
-      $saldox = DB::select('select @saldoto as saldoto');     
 
-dd($saldox);
+           $notify = deposito::whereUser_id(1)->whereStatus(0)->get();          
+         
+
+dd($notify);
 }
 );
 

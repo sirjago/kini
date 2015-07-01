@@ -8,14 +8,41 @@
 
 
 
-@foreach($errors->all() as $error)
-<li>{!! $error!!}</li>
-@endforeach
+<br><br><br><br>
+<a class="btn btn-success" href="{{ URL::route('bancos.show',array(Auth::user()->id)) }}" role="button">Depositar</a>
+
+<a class="btn btn-success" href="{{ URL::route('cuentas.show',array(Auth::user()->id)) }}" role="button">Mis cuentas</a>
+
+<a class="btn btn-success" href="{{ URL::route('cuentas.retiro',array(Auth::user()->id)) }}" role="button">Retirar</a>
+
+<a class="btn btn-success" href="{{ URL::route('bancos.show',array(Auth::user()->id)) }}" role="button">Cuenta Bancaria</a>
 <br><br><br>
 
+@if (!$notify->isEmpty())
+Depositos en Proceso de Verificacion
+
+<table style="width:75%">
+  <th>Fecha de Deposito</th>
+    <th>Monto </th>   
+    <th>Referencia</th>
+    <th>Status</th>
 @foreach($notify->all() as $noti)
-<li>{!! $noti!!}</li>
+
+<tr>
+    <td>{!! $noti->fecha_solicitud!!}</td>
+    <td>${!! $noti->monto!!}</td>
+    <td>{!! $noti->referencia!!}</td>
+      <td>Por Verificar</td>
+   
+  </tr>
+ 
+
 @endforeach
+</table> 
+@else
+No tienes depositos pendientes de verificar
+@endif
+
 
 {!!Form::open(array('route' =>array('cuentas.deposito')))!!}
 
@@ -71,6 +98,11 @@ function changetextbox()
 <br><br><br><br>
 {!!Form::submit('Enviar Notificacion') !!}<br><br>
 
+
+@foreach($errors->all() as $error)
+<li>{!! $error!!}</li>
+@endforeach
+<br>
 
 {!!Form::close()!!}
 

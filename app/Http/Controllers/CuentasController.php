@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\GuardarBancoRequest;
+use App\Http\Requests\GuardarDepositoRequest;
 use Flash;
 use Auth;
 use DB;
@@ -127,7 +128,7 @@ else return Redirect::to('/login');
 
 
 
-public function deposito ()
+public function deposito (GuardarDepositoRequest $request)
 	{
 			if(Auth::check()) {
 			
@@ -147,7 +148,7 @@ public function deposito ()
   $deposito->save();
 
    flash::overlay('Tu notificacion de deposito ha sido recibida con exito'); 
-     return Redirect::route('cuentas.show',array(Auth::user()->id));
+     return Redirect::route('cuentas.notify',array(Auth::user()->id));
 		
 	}
 else return Redirect::to('/login');
