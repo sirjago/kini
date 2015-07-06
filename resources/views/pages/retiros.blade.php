@@ -12,6 +12,40 @@
 <a class="btn btn-success" href="{{ URL::route('cuentas.show',array(Auth::user()->id)) }}" role="button">Mis Cuentas</a>
 
 <a class="btn btn-success" href="{{ URL::route('bancos.show',array(Auth::user()->id)) }}" role="button">Cuenta Bancaria</a>
+<br><br>
+@if (!$notifi->isEmpty())
+Retiros en proceso
+
+<table style="width:75%">
+  <th>Fecha de Solicitud</th>
+    <th>Monto </th>   
+   
+    <th>Status</th>
+      <th>Cancelar</th>
+@foreach($notifi->all() as $noti)
+
+<tr>
+    <td>{!! $noti->fecha_solicitud!!}</td>
+    <td>${!! $noti->monto!!}</td>
+   
+      <td>Por Depositar</td>
+      
+   <td>{!! Form::open(array( 'method' => 'DELETE', 'route' => array('cuentas.delete',Auth::user()->id, $noti->id))) !!}
+                      
+                        {!! Form::submit('Cancelar', array('class' => 'btn btn-danger btn-xs')) !!}</td>
+  </tr>
+ 
+
+@endforeach
+</table> 
+@else
+No tienes retiros en proceso
+@endif
+
+
+
+
+{!!Form::open(array('route' =>array('cuentas.solicitar', Auth::user()->id)))!!}
 <?php $z  =0; ?>
 
 <br><br><br><br><br><br><br><br>

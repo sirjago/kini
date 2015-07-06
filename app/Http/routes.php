@@ -90,6 +90,9 @@ Route::get('cuenta/retiro/{user_id}/', array('as' =>'cuentas.retiro','uses'=>'Cu
 Route::get('cuenta/datos/', array('as' =>'cuentas.datos','uses'=>'CuentasController@datos'));
 Route::post('cuenta/deposito/', array('as' =>'cuentas.deposito','uses'=>'CuentasController@deposito'));
 Route::get('cuenta/notify/{id}/', array('as' =>'cuentas.notify','uses'=>'CuentasController@notify'));
+Route::post('cuenta/solicitar/{id}/', array('as' =>'cuentas.solicitar','uses'=>'CuentasController@solicitud'));
+Route::get('cuenta/solicitar/{id}/',['middleware' =>'auth', 'uses' =>'CuentasController@solicitud']);
+Route::delete('cuenta/delete/{user_id}/{id}/', array('as' =>'cuentas.delete','uses'=>'CuentasController@delete'));
 
 Route::post('jornadas/guardar/{jor}', array('as' =>'jornadas.guardar','uses'=>'JornadasController@guardar'));
 

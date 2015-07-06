@@ -8,8 +8,10 @@ use App\Http\Requests\GuardarDepositoRequest;
 use Flash;
 use Auth;
 use DB;
+use Carbon\Carbon;
 use App\Saldo;
 use App\deposito;
+use App\retiro;
 use App\user;
 use Input;
 use Redirect;
@@ -110,20 +112,53 @@ public function update($user_id,GuardarBancoRequest $request)
 	}
 
 
+
+
+
+
 	public function retiro ($id)
 	{
 			if(Auth::check()) {
 			if(Auth::user()->id== $id) {
 		$user =  User::whereId($id)->get();
 		   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($id) );
-		  $saldox = DB::select('select @saldoto as saldoto');                    
-         return   view('pages.retiros',['user' => $user,'saldox' => $saldox  ]);
-		//return 'redone';
+		  $saldox = DB::select('select @saldoto as saldoto');    
+
+         $notifi = retiro::whereUser_id($id)->whereStatus(0)->get();  
+
+
+         return   view('pages.retiros',['user' => $user,'saldox' => $saldox,'notifi' => $notifi  ]);
+		
 		}
 		return 'Failedox  not logged :(';
 	}
 else return Redirect::to('/login');
 }
+
+	public function solicitud ($id)
+	{
+			if(Auth::check()) {
+			if(Auth::user()->id == $id) {
+		   $solicitud =  New retiro;
+         $solicitud->monto = Input::get('monto');
+          $solicitud->user_id = $id;
+            $solicitud->status = 0;
+           
+                $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
+           $solicitud->fecha_solicitud  =  $convert_date;
+
+
+
+               $solicitud->save();
+
+		}
+		else return 'Failedox  not loggedsss :(';
+	}
+else return Redirect::to('/login');
+}
+
+
+
 
 
 
@@ -175,6 +210,29 @@ public function notify ($id)
 		       $notify = deposito::whereUser_id($id)->whereStatus(0)->get();          
          return   view('pages.deposito',['notify' => $notify]);
 
+		
+	}
+else return Redirect::to('/login');
+}
+
+
+
+
+public function delete ($user_id,$id)
+	{
+			if(Auth::check()) {
+			$reti = retiro::find($id);
+		    $reti->delete();
+		      
+       	$user =  User::whereId($user_id)->get();
+		   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($user_id) );
+		  $saldox = DB::select('select @saldoto as saldoto');    
+
+         $notifi = retiro::whereUser_id($user_id)->whereStatus(0)->get();  
+
+
+         return   view('pages.retiros',['user' => $user,'saldox' => $saldox,'notifi' => $notifi  ]);
+		
 		
 	}
 else return Redirect::to('/login');
