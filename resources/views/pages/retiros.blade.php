@@ -13,6 +13,8 @@
 
 <a class="btn btn-success" href="{{ URL::route('bancos.show',array(Auth::user()->id)) }}" role="button">Cuenta Bancaria</a>
 <br><br>
+<?php $pending  =0; ?>
+<?php $pend  =0; ?>
 @if (!$notifi->isEmpty())
 Retiros en proceso
 
@@ -27,7 +29,7 @@ Retiros en proceso
 <tr>
     <td>{!! $noti->fecha_solicitud!!}</td>
     <td>${!! $noti->monto!!}</td>
-   
+   <?php $pending  =$pending+$noti->monto; ?>
       <td>Por Depositar</td>
       
    <td>{!! Form::open(array( 'method' => 'DELETE', 'route' => array('cuentas.delete',Auth::user()->id, $noti->id))) !!}
@@ -49,7 +51,14 @@ No tienes retiros en proceso
 <?php $z  =0; ?>
 
 <br><br><br><br><br><br><br><br>
-  SALDO {!! $saldox[0]->saldoto!!}
+@if (!$notifi->isEmpty())
+  <?php $pend  =$saldox[0]->saldoto-$pending; ?>
+  SALDO {!! $saldox[0]->saldoto!!} (Disponible para retirar:{!! $pend!!} )
+  
+  @else  
+SALDO {!! $saldox[0]->saldoto!!}
+  @endif
+
 <br><br><br><br>
 @if ($user[0]->tipocuenta <> null)
      @if ($user[0]->tipocuenta == 1)
@@ -140,9 +149,11 @@ Por favor ingresa el monto a retirar de tu saldo.<br><br>
 <script type="text/javascript">
 function SaldoChange()
 {
+  var Sal = '<?php echo $pending; ?>';
    var Salx = '<?php echo $saldox[0]->saldoto; ?>';
    var Salx2 = document.getElementById("montox").value;
-    if ( parseInt(Salx2)>parseInt(Salx)) {
+   var Salx3 = parseInt(Sal) + parseInt(Salx2);
+    if ( parseInt(Salx3)>parseInt(Salx)) {
 
         alert('El monto a retirar es mayor al disponible en saldo');
         document.getElementById("montox").value = '';
