@@ -110,6 +110,7 @@ Route::delete('salir/{id}', array('as'=>'grupos/salir','uses'=>'GruposController
 
 Route::get('grupos/dejar/{id}/{grupo}', array('as'=>'grupos/dejar','uses'=>'GruposController@dejar'));
 Route::get('grupos/general/{id}', array('as'=>'grupos.general','uses'=>'GruposController@general'));
+Route::get('grupos/lobby', array('as'=>'grupos.lobby','uses'=>'GruposController@lobby'));
 Route::get('grupos/crear/{id}', array('as'=>'grupos/crear','uses'=>'GruposController@create'));
 Route::get('grupos/unirse/{id}', 'GruposController@unirse');
 

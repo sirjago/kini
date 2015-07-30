@@ -4,6 +4,7 @@ use App\user;
 use App\Record;
 use Auth;
 use DB;
+use Carbon\Carbon;
 use Input;
 use Redirect;
 use App\Http\Controllers\Controller;
@@ -44,11 +45,14 @@ class GruposController extends Controller {
 	
 	 public function create($id)
     {
+    		if(Auth::check()) {
         if(Auth::user()->id == $id) {
 		$grupo = grupos::whereownerid($id)->first();
 		 return  view('pages.CrearGrupo',['grupos' => $grupo]); 
 		}
-		return 'FAILEDO '  ;     
+		return 'FAILEDO '  ; 
+		}
+		else return Redirect::to('/login');    
 
 
 	
@@ -93,10 +97,25 @@ class GruposController extends Controller {
 
     public function register(CreateGrupoRequest $request)
     {
+    		if(Auth::check()) {
+			
         $grupo = new Grupos;
+        //$fech =  Input::get('limite');
+        
+         $fech = (Input::has('limite')) ? true : false;
+        $coop =  (Input::has('cooperacha')) ? true : false;
+        $grupo->costo = Input::get('limite');
 		$grupo->nombre = Input::get('nombre');
+		if ($fech == true) {
+			$grupo->caducidad = date("d-m-Y", strtotime(Input::get('fechalimite')));
+		 
+		}
+		if ($coop == true) {
+			$grupo->costo = Input::get('costo');
+		}
 		$grupo->ownerid = Auth::user()->id;
-		//$grupo->clave = Input::get('clave');
+		
+		$grupo->tipo_grupo = 1;
 		$grupo->clave = str_random(32);
 		$grupo->save();
 
@@ -108,6 +127,8 @@ class GruposController extends Controller {
 
 
 		return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+	}
+		else return Redirect::to('/login');
 		//return Redirect::route('pages.grupos',Auth::user()->id);
     }
 	
@@ -172,6 +193,17 @@ class GruposController extends Controller {
       		
 		 $user = User::all();
        return view('pages.General',['Record' => $general,'user' => $user]);	
+      
+	
+    }
+
+
+        public function lobby()
+    {
+      $grupos =grupos::where('tipo_grupo',1)->orWhere('tipo_grupo',2)->get();;
+      		
+		 
+       return view('pages.lobby',['grupos' => $grupos]);	
       
 	
     }

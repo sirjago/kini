@@ -7,7 +7,7 @@
 <br><br><br><br>
 <a class="btn btn-success" href="{{ URL::route('cuentas.datos') }}" role="button">Depositar</a>
 
-<a class="btn btn-success" href="{{ URL::route('cuentas.deposito',array(Auth::user()->id)) }}" role="button">Aviso de Deposito</a>
+<a class="btn btn-success" href="{{ URL::route('cuentas.notify',array(Auth::user()->id)) }}" role="button">Aviso de Deposito</a>
 
 <a class="btn btn-success" href="{{ URL::route('cuentas.show',array(Auth::user()->id)) }}" role="button">Mis Cuentas</a>
 
