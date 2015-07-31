@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-
+<br><br> <br>
 @foreach($errors->all() as $error)
 <li>{!! $error!!}</li>
 @endforeach
@@ -9,7 +9,9 @@
 CREAR GRUPO
 
 
-{!!Form::open(['route'=> 'grupos/registrar'])!!}
+{!!Form::open(array('route'=> 'grupos/registrar', 'onSubmit' => 'return validar();'))!!}
+
+
 {!!Form::label('Nombre del grupo')!!}<br>
 {!!Form::text('nombre')!!}<br>
 <br>
@@ -51,7 +53,28 @@ function changecosto()
 </script>
 
 
+<script>
+function validar() {
+    if (document.getElementById("checkbox").checked ) 
+    {
+    var x = document.getElementById('datepicker').value;
+    if (x == null || x == "") {
+        alert("Una fecha limite tiene que ser seleccionada");
+        return false;
+    }
+   }
 
+
+    if (document.getElementById("checkbox2").checked ) 
+    {
+    var x = document.getElementById('cooperacha').value;
+    if (x == null || x == "") {
+        alert("El costo de la cooperacha debe ser capturado");
+        return false;
+    }
+   }
+}
+</script>
 
 
 {!!Form::submit('Crear Grupo') !!}
