@@ -107,7 +107,7 @@ class GruposController extends Controller {
         $grupo->costo = Input::get('limite');
 		$grupo->nombre = Input::get('nombre');
 		if ($fech == true) {
-			$grupo->caducidad = date("d-m-Y", strtotime(Input::get('fechalimite')));
+			$grupo->caducidad = date("Y-m-d", strtotime(Input::get('fechalimite')));
 		 
 		}
 		if ($coop == true) {

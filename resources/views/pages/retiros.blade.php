@@ -167,7 +167,7 @@ else {
 
 
 
-{!!Form::submit('Actualizar',array('id' => 'enviar','disabled')) !!}<br><br>
+{!!Form::submit('Retirar',array('id' => 'enviar','disabled')) !!}<br><br>
 @stop
 
 

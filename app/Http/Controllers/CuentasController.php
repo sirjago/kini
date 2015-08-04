@@ -143,14 +143,21 @@ else return Redirect::to('/login');
          $solicitud->monto = Input::get('monto');
           $solicitud->user_id = $id;
             $solicitud->status = 0;
-           
                 $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
            $solicitud->fecha_solicitud  =  $convert_date;
 
+ $solicitud->save();
 
 
-               $solicitud->save();
+$user =  User::whereId($id)->get();
+		   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($id) );
+		  $saldox = DB::select('select @saldoto as saldoto');    
 
+         $notifi = retiro::whereUser_id($id)->whereStatus(0)->get();  
+
+
+ 
+            return   view('pages.retiros',['user' => $user,'saldox' => $saldox,'notifi' => $notifi  ]);
 		}
 		else return 'Failedox  not loggedsss :(';
 	}
