@@ -23,6 +23,10 @@ CREAR GRUPO
 {!!Form::label('Cooperacha')!!}
 {!! Form::text('costo',null, array('id' => 'cooperacha',"size" => '4',"maxlength" => '4','disabled')) !!}<br> <br>
 
+{!! Form::checkbox('participantes', '1',null,array('id' => 'checkbox3','onChange' => 'changemiembros();')) !!}
+{!!Form::label('# de Participantes')!!}
+{!! Form::text('miembros',null, array('id' => 'participante',"size" => '4',"maxlength" => '4','disabled')) !!}<br> <br>
+
 
 <script type="text/javascript">
 function changefecha()
@@ -52,6 +56,19 @@ function changecosto()
 }
 </script>
 
+<script type="text/javascript">
+function changemiembros()
+{
+    if (document.getElementById("checkbox3").value === "1") {
+        document.getElementById("checkbox3").value = "0";
+        document.getElementById("participante").removeAttribute('disabled') ;
+    } else {
+      document.getElementById("checkbox3").value = "1";
+        document.getElementById("participante").setAttribute("disabled", true);
+    }
+}
+</script>
+
 
 <script>
 function validar() {
@@ -73,6 +90,17 @@ function validar() {
         return false;
     }
    }
+
+
+if (document.getElementById("checkbox3").checked ) 
+    {
+    var x = document.getElementById('participante').value;
+    if (x == null || x == "") {
+        alert("El numero de participantes debe ser capturado");
+        return false;
+    }
+   }
+
 }
 </script>
 

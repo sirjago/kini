@@ -104,6 +104,7 @@ class GruposController extends Controller {
         
          $fech = (Input::has('limite')) ? true : false;
         $coop =  (Input::has('cooperacha')) ? true : false;
+         $part =  (Input::has('participantes')) ? true : false;
         $grupo->costo = Input::get('limite');
 		$grupo->nombre = Input::get('nombre');
 		if ($fech == true) {
@@ -113,6 +114,12 @@ class GruposController extends Controller {
 		if ($coop == true) {
 			$grupo->costo = Input::get('costo');
 		}
+
+         if ($part == true) {
+			$grupo->miembros = Input::get('miembros');
+		}
+
+
 		$grupo->ownerid = Auth::user()->id;
 		
 		$grupo->tipo_grupo = 1;
