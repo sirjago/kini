@@ -3,6 +3,7 @@
 @section('content')
 <?php  use Jenssegers\Date\Date;   ?>
 <?php  use  Carbon\Carbon ;   ?>
+
 <?php  Date::setLocale('es');  ?>
 
 
@@ -18,7 +19,7 @@ Lobby
 
 <table style="width:75%">
 	 <th>Nombre</th>
-  <th>Fecha Limite</th>
+  <th>Fecha Limite de Ingreso</th>
     <th>Cooperacha </th>   
     <th>Participantes</th>
       <th>Unirse</th>
@@ -40,7 +41,18 @@ Lobby
    @else
    <td>${!! $grupo->costo!!}</td>
    @endif
-      <td>..participantes..</td>
+
+   @if ($grupo->miembros == 0)
+      <td>Abierto</td>
+      @else
+      <?php
+$num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
+      ?>
+
+
+
+   <td> {!! $num !!}/{!! $grupo->miembros!!}</td>
+   @endif
       
    <td>{!! Form::open(array( 'method' => 'DELETE', 'route' => array('cuentas.delete',Auth::user()->id, $grupo->id))) !!}
                       
