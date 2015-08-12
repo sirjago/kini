@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Input;
 use Redirect;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 use App\Http\Requests\CreateGrupoRequest;
 use App\Http\Requests\UnirseGrupoRequest;
 
@@ -207,8 +208,11 @@ class GruposController extends Controller {
 
         public function lobby()
     {
-      $grupos =grupos::where('tipo_grupo',1)->orWhere('tipo_grupo',2)->get();;
-      		
+      //$grupos =grupos::where('tipo_grupo',1)->orWhere('tipo_grupo',2)->get();
+$grupos = Collection::make(DB::select('CALL quini.LobbyActivos'));
+    	// $grupos = DB::select('CALL quini.LobbyActivos');
+     // $grupos =grupos::where('tipo_grupo',1)->orWhere(function ($query) {  $query->where('tipo_grupo',2)->where('caducidad', '=', NULL)->orWhere('caducidad', '<', strtotime('now'));
+           // })->get();		
 		 
        return view('pages.lobby',['grupos' => $grupos]);	
       

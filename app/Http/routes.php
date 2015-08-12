@@ -17,14 +17,16 @@ use App\quiniela;
 use App\estado;
 use App\Saldo;
 use App\deposito;
+use Illuminate\Support\Collection;
 
 Route::get('/lolo', function()
 {
 
-           $notify = deposito::whereUser_id(1)->whereStatus(0)->get();          
+         $grupos = Collection::make(DB::select('CALL quini.LobbyActivos'));
+         //$grupos =grupos::where('tipo_grupo',1)->orWhere('tipo_grupo',2)->WhereNULL('caducidad')->WhereNull('activo')->get();    
          
 
-dd($notify);
+dd($grupos);
 }
 );
 
