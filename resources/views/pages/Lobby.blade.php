@@ -8,10 +8,12 @@
 
 
 <br><br><br><br>
-
+<br><br><br><br>
 <li>{!! $grupos!!}</li>
-
 <br><br>
+<li>{!! $integrante!!}</li>
+<br><br>
+
 
 Lobby
 <br>
@@ -25,6 +27,16 @@ Lobby
       <th>Unirse</th>
 @foreach($grupos->all() as $grupo)
 
+<?php  $si = 0;  ?>
+@foreach($integrante->all() as $integrantex)
+@if (Auth::user()->id == $integrantex->user_id)
+<?php  $si = 1;  ?>
+@endif
+@endforeach
+
+@if ($si==1 )
+
+@else
 <tr>
 	<td>{!! $grupo->nombre!!}</td>
 	    
@@ -53,12 +65,25 @@ $num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
 
    <td> {!! $num !!}/{!! $grupo->miembros!!}</td>
    @endif
-      
-   <td>{!! Form::open(array( 'method' => 'DELETE', 'route' => array('cuentas.delete',Auth::user()->id, $grupo->id))) !!}
-                      
-                        {!! Form::submit('Unirme', array('class' => 'btn btn-info btn-xs')) !!}</td>
+
+
+
+
+   @if(isset($grupo->costo))
+   @else  <?php $grupo->costo = 0;?> 
+      @endif
+   <td>
+
+    {!! Form::open(array( 'method' => 'POST', 'route' => array('grupos/unircosto',Auth::user()->id,$grupo->grupos_id,$grupo->costo))) !!}
+                        {!! Form::submit('Unirme', array('class' => 'btn btn-info btn-xs')) !!}
+                      {!!Form::close()!!}
+                      {!! $grupo->costo!!}
+
+                      </td>
+
+
   </tr>
- 
+ @endif
 
 @endforeach
 </table> 

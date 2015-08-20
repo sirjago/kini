@@ -92,8 +92,24 @@ class GruposController extends Controller {
 		
        return Redirect::route('grupos.show',array(Auth::user()->id, 1));
 		}
-		//return 'Failedo :(';  
-   // }
+	
+
+public function unircosto($id,$grupo,$costo)
+    {
+       if(Auth::user()->id== $id) {
+         
+
+
+        $user = User::find($id);
+		$user->AssignGrupo($grupo);
+
+       //  return  view('pages.UnirseGrupo',['grupos' => $grupo]); 
+		
+       //return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+
+		}
+
+}
 
 
     public function register(CreateGrupoRequest $request)
@@ -208,15 +224,17 @@ class GruposController extends Controller {
 
         public function lobby()
     {
-      //$grupos =grupos::where('tipo_grupo',1)->orWhere('tipo_grupo',2)->get();
+     
+     if(Auth::check()) {
 $grupos = Collection::make(DB::select('CALL quini.LobbyActivos'));
+$integrante =  Collection::make(DB::table('grupo_user')->get());
     	// $grupos = DB::select('CALL quini.LobbyActivos');
      // $grupos =grupos::where('tipo_grupo',1)->orWhere(function ($query) {  $query->where('tipo_grupo',2)->where('caducidad', '=', NULL)->orWhere('caducidad', '<', strtotime('now'));
            // })->get();		
 		 
-       return view('pages.lobby',['grupos' => $grupos]);	
+       return view('pages.lobby',['grupos' => $grupos,'integrante' => $integrante]);	
       
-	
+	}
     }
 
 

@@ -110,6 +110,9 @@ Route::get('jornadas/showo/{id}/{jor}',['middleware' =>'auth', 'uses' =>'Jornada
 
 Route::delete('salir/{id}', array('as'=>'grupos/salir','uses'=>'GruposController@salir'));
 
+
+
+
 Route::get('grupos/dejar/{id}/{grupo}', array('as'=>'grupos/dejar','uses'=>'GruposController@dejar'));
 Route::get('grupos/general/{id}', array('as'=>'grupos.general','uses'=>'GruposController@general'));
 Route::get('grupos/lobby', array('as'=>'grupos.lobby','uses'=>'GruposController@lobby'));
@@ -120,7 +123,7 @@ Route::get('grupos/total/{id}/{jor}', array('as' =>'grupos.total','uses'=>'Grupo
 
 Route::get('grupos/{id}/{jor}', array('as' =>'grupos.show','uses'=>'GruposController@show'));
 Route::get('grupos/{id}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@show']);
-
+Route::post('grupos/unircosto/{id}/{grupo}/{costo}', array('as' =>'grupos/unircosto','uses'=>'GruposController@unircosto'));
 
 //Route::get('grupos/crear/{ido}', array('as' =>'grupos.create','uses'=>'GruposController@create'));
 //Route::get('grupos/crear/{id}', ['middleware' =>'auth','uses'=>'GruposController@create']);
