@@ -3,6 +3,7 @@ use App\grupos;
 use App\user;
 use App\Record;
 use Auth;
+use App\retiro;
 use DB;
 use Carbon\Carbon;
 use Input;
@@ -102,7 +103,17 @@ public function unircosto($id,$grupo,$costo)
 
         $user = User::find($id);
 		$user->AssignGrupo($grupo);
+        if($costo != 0){
 
+        	$solicitud =  New retiro;
+            $solicitud->monto = $costo;
+            $solicitud->user_id = $id;
+            $solicitud->status = 1;
+            $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
+            $solicitud->fecha_solicitud  =  $convert_date;
+
+ $solicitud->save();
+        }
        //  return  view('pages.UnirseGrupo',['grupos' => $grupo]); 
 		
        //return Redirect::route('grupos.show',array(Auth::user()->id, 1));

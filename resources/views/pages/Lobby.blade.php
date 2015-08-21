@@ -20,7 +20,7 @@ Lobby
 
 
 <table style="width:75%">
-	 <th>Nombre</th>
+   <th>Nombre</th>
   <th>Fecha Limite de Ingreso</th>
     <th>Cooperacha </th>   
     <th>Participantes</th>
@@ -30,20 +30,23 @@ Lobby
 <?php  $si = 0;  ?>
 @foreach($integrante->all() as $integrantex)
 @if (Auth::user()->id == $integrantex->user_id)
-<?php  $si = 1;  ?>
+<?php  $si = $integrantex->grupos_id;  ?>
 @endif
 @endforeach
 
-@if ($si==1 )
+
+
+
+@if ($si==$grupo->grupos_id )
 
 @else
 <tr>
-	<td>{!! $grupo->nombre!!}</td>
-	    
-	    @if ($grupo->caducidad == null)
-	    <td>Sin fecha limite</td>
-	    @else
-	        <?php $date = new Date($grupo->caducidad);?>
+  <td>{!! $grupo->nombre!!}</td>
+      
+      @if ($grupo->caducidad == null)
+      <td>Sin fecha limite</td>
+      @else
+          <?php $date = new Date($grupo->caducidad);?>
     <td>{!! $date->format('j /m /Y')!!}</td>
          @endif
 
@@ -78,6 +81,8 @@ $num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
                         {!! Form::submit('Unirme', array('class' => 'btn btn-info btn-xs')) !!}
                       {!!Form::close()!!}
                       {!! $grupo->costo!!}
+                      <br>
+                        {!! $grupo->grupos_id!!}
 
                       </td>
 
