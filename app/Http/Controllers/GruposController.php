@@ -4,6 +4,7 @@ use App\user;
 use App\Record;
 use Auth;
 use App\retiro;
+use App\saldo;
 use DB;
 use Carbon\Carbon;
 use Input;
@@ -105,12 +106,14 @@ public function unircosto($id,$grupo,$costo)
 		$user->AssignGrupo($grupo);
         if($costo != 0){
 
-        	$solicitud =  New retiro;
-            $solicitud->monto = $costo;
+        	$solicitud =  New saldo;
+        	$solicitud->abono = 0;
+            $solicitud->cargo = $costo;
             $solicitud->user_id = $id;
-            $solicitud->status = 1;
+            $solicitud->referencia = "grupo";
+            $solicitud->banco = "NA";
             $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
-            $solicitud->fecha_solicitud  =  $convert_date;
+            $solicitud->fecha  =  $convert_date;
 
  $solicitud->save();
         }
@@ -239,11 +242,15 @@ public function unircosto($id,$grupo,$costo)
      if(Auth::check()) {
 $grupos = Collection::make(DB::select('CALL quini.LobbyActivos'));
 $integrante =  Collection::make(DB::table('grupo_user')->get());
+
+
+   $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array(Auth::user()->id) );
+		  $saldox = DB::select('select @saldoto as saldoto');   
     	// $grupos = DB::select('CALL quini.LobbyActivos');
      // $grupos =grupos::where('tipo_grupo',1)->orWhere(function ($query) {  $query->where('tipo_grupo',2)->where('caducidad', '=', NULL)->orWhere('caducidad', '<', strtotime('now'));
            // })->get();		
 		 
-       return view('pages.lobby',['grupos' => $grupos,'integrante' => $integrante]);	
+       return view('pages.lobby',['grupos' => $grupos,'integrante' => $integrante,'saldox' => $saldox]);	
       
 	}
     }

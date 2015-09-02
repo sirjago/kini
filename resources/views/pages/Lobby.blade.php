@@ -6,7 +6,7 @@
 
 <?php  Date::setLocale('es');  ?>
 
-
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <br><br><br><br>
 <br><br><br><br>
 <li>{!! $grupos!!}</li>
@@ -16,8 +16,14 @@
 
 
 Lobby
+
+
+
 <br>
 
+
+  SALDO {!! $saldox[0]->saldoto!!}
+{!!Form::hidden('saldo',$saldox[0]->saldoto,array("id" => 'saldito'))!!}
 
 <table style="width:75%">
    <th>Nombre</th>
@@ -28,6 +34,8 @@ Lobby
 @foreach($grupos->all() as $grupo)
 
 <?php  $si = 0;  ?>
+<?php  $vergo = 0;  ?>
+
 @foreach($integrante->all() as $integrantex)
 @if (Auth::user()->id == $integrantex->user_id)
 <?php  $si = $integrantex->grupos_id;  ?>
@@ -77,8 +85,9 @@ $num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
       @endif
    <td>
 
-    {!! Form::open(array( 'method' => 'POST', 'route' => array('grupos/unircosto',Auth::user()->id,$grupo->grupos_id,$grupo->costo))) !!}
-                        {!! Form::submit('Unirme', array('class' => 'btn btn-info btn-xs')) !!}
+   {!!  Form::open(array( 'method' => 'POST', 'route' => array('grupos/unircosto',Auth::user()->id,$grupo->grupos_id,$grupo->costo))) !!}
+
+                       <input class="btn btn-info btn-xs" onClick="return saldo(<?php  echo $grupo->costo;?>);" type="submit" value="Unirme">
                       {!!Form::close()!!}
                       {!! $grupo->costo!!}
                       <br>
@@ -93,8 +102,33 @@ $num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
 @endforeach
 </table> 
 
-<br>
 
+
+<script>
+
+</script>
+
+<br>
+<script type="text/javascript">
+
+
+function saldo(costox)
+{
+     
+var sal = document.getElementById("saldito").value;
+    // var sal = "<?php  $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array(Auth::user()->id) );  ?>";
+     alert(sal);
+  if(sal < costox ){
+    alert("No tienes saldo");
+    return false;
+  }else {
+    alert("saldo");
+    
+  }
+  
+   
+}
+</script>
 
 
 
