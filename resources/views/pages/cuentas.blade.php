@@ -15,7 +15,19 @@
 
 
 <br><br><br><br><br><br><br><br>
-  SALDO {!! $saldox[0]->saldoto!!}
+@if ($saldox[0]->saldoto == 0)
+ 
+  SALDO $0
+  
+  @else  
+SALDO ${!! $saldox[0]->saldoto!!}
+  @endif
+
+
+
+
+
+  
 <br><br><br><br>
  <table style="width:75%">
 	<th># Movimiento</th>
