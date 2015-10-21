@@ -53,10 +53,15 @@ No tienes retiros en proceso
 <br><br><br><br><br><br><br><br>
 @if (!$notifi->isEmpty())
   <?php $pend  =$saldox[0]->saldoto-$pending; ?>
-  SALDO {!! $saldox[0]->saldoto!!} (Disponible para retirar:{!! $pend!!} )
+  SALDO {!! $saldox[0]->saldoto!!} (Disponible para retirar:{!! $pend!!} ) 
   
-  @else  
-SALDO {!! $saldox[0]->saldoto!!}
+  @else
+
+   @if ($saldox[0]->saldoto > 0)  
+SALDO ${!! $saldox[0]->saldoto!!}  
+   @else
+      SALDO $0
+   @endif
   @endif
 
 <br><br><br><br>
@@ -160,7 +165,10 @@ function SaldoChange()
              document.getElementById("enviar").setAttribute("disabled", true);
     } 
 else {
- document.getElementById("enviar").removeAttribute('disabled') ;
+
+ if(Salx === ""){
+ alert('No tienes saldo para retirar');}
+ else { document.getElementById("enviar").removeAttribute('disabled') ;}
     }
 }
 </script>
