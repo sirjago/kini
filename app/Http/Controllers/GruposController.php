@@ -51,7 +51,11 @@ class GruposController extends Controller {
     		if(Auth::check()) {
         if(Auth::user()->id == $id) {
 		$grupo = grupos::whereownerid($id)->first();
-		 return  view('pages.CrearGrupo',['grupos' => $grupo]); 
+
+		$res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($id) );
+		  $saldox = DB::select('select @saldoto as saldoto');  
+		  
+		 return  view('pages.CrearGrupo',['grupos' => $grupo,'saldox' => $saldox]); 
 		}
 		return 'FAILEDO '  ; 
 		}

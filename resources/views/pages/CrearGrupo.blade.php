@@ -6,10 +6,20 @@
 <li>{!! $error!!}</li>
 @endforeach
 <br> <br><br> <br><br> <br>
+ @if ($saldox[0]->saldoto > 0)  
+SALDO ${!! $saldox[0]->saldoto!!}  
+   @else
+      SALDO $0
+   @endif
+
+<br> <br>
 CREAR GRUPO
 
 
 {!!Form::open(array('route'=> 'grupos/registrar', 'onSubmit' => 'return validar();'))!!}
+
+  
+
 
 
 {!!Form::label('Nombre del grupo')!!}<br>
@@ -46,9 +56,18 @@ function changefecha()
 <script type="text/javascript">
 function changecosto()
 {
+    var Salx = '<?php echo $saldox[0]->saldoto; ?>';
     if (document.getElementById("checkbox2").value === "1") {
+
+if(Salx === ""){
+ alert('No puedes crear grupo con costo si no tienes saldo');}
+ else{
+
+
         document.getElementById("checkbox2").value = "0";
         document.getElementById("cooperacha").removeAttribute('disabled') ;
+    }
+
     } else {
       document.getElementById("checkbox2").value = "1";
         document.getElementById("cooperacha").setAttribute("disabled", true);
@@ -72,6 +91,9 @@ function changemiembros()
 
 <script>
 function validar() {
+
+    
+
     if (document.getElementById("checkbox").checked ) 
     {
     var x = document.getElementById('datepicker').value;
@@ -83,12 +105,24 @@ function validar() {
 
 
     if (document.getElementById("checkbox2").checked ) 
+
     {
+
+        
     var x = document.getElementById('cooperacha').value;
+     var Sald = '<?php echo $saldox[0]->saldoto; ?>';
     if (x == null || x == "") {
         alert("El costo de la cooperacha debe ser capturado");
         return false;
     }
+    else{
+      
+        if (x > Sald)
+            alert("El costo de la cooperacha es mayor a tu saldo");
+        return false;
+    }
+
+    
    }
 
 
