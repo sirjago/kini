@@ -111,15 +111,17 @@ function validar() {
         
     var x = document.getElementById('cooperacha').value;
      var Sald = '<?php echo $saldox[0]->saldoto; ?>';
+
     if (x == null || x == "") {
         alert("El costo de la cooperacha debe ser capturado");
         return false;
     }
     else{
       
-        if (x > Sald)
+        if (x < Sald){
+           
             alert("El costo de la cooperacha es mayor a tu saldo");
-        return false;
+        return false;}
     }
 
     

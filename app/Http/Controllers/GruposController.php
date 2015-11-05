@@ -148,6 +148,18 @@ public function unircosto($id,$grupo,$costo)
 		}
 		if ($coop == true) {
 			$grupo->costo = Input::get('costo');
+
+			//Descuenta saldo al crearlo
+		    $solicitud =  New saldo;
+        	$solicitud->abono = 0;
+            $solicitud->cargo = $grupo->costo;
+            $solicitud->user_id = Auth::user()->id;
+            $solicitud->referencia = "grupo";
+            $solicitud->banco = "NA";
+            $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
+            $solicitud->fecha  =  $convert_date;
+            $solicitud->save();
+		
 		}
 
          if ($part == true) {
@@ -165,6 +177,7 @@ public function unircosto($id,$grupo,$costo)
         $grupete = grupos::whereownerid(Auth::user()->id)->first();
         $user = User::find(Auth::user()->id);
 		$user->OwnerGrupo($grupete->id);
+
 		
 
 
