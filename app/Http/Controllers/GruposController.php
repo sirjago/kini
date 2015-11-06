@@ -70,7 +70,12 @@ class GruposController extends Controller {
     {
         if(Auth::user()->id== $id) {
 		$grupo = grupos::whereownerid($id)->first();
-		 return  view('pages.UnirseGrupo',['grupos' => $grupo]); 
+		// traigo saldo
+
+		 $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($id) );
+		  $saldox = DB::select('select @saldoto as saldoto');    
+
+		 return  view('pages.UnirseGrupo',['grupos' => $grupo,'saldox' => $saldox]); 
 		}
 		return 'Failedo :(';     
 
@@ -83,20 +88,43 @@ class GruposController extends Controller {
       // if(Auth::user()->id== $id) {
          $clave = Input::get('clave');
 		 $ClaveGrupo = grupos::whereClave($clave)->first();
+
+		 // traigo saldo
+
+		  $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array(Auth::user()->id) );
+		  $saldox = DB::select('select @saldoto as saldoto');   
+
 		 if ($ClaveGrupo == null){
 		 	return 'No existe el grupo';
 		 }
 		 
+		 // valida tener saldo para ingresar al grupo
 
+		 if($ClaveGrupo->costo < $saldox[0]->saldoto){
 
-//Hace relacion de grupos y user (unir)
-        //$grupete = grupos::whereownerid(Auth::user()->id)->first();
+         //Hace relacion de grupos y user (unir)
+        
         $user = User::find(Auth::user()->id);
 		$user->AssignGrupo($ClaveGrupo->id);
 
-       //  return  view('pages.UnirseGrupo',['grupos' => $grupo]); 
+     //Descuenta saldo al crearlo
+		    $solicitud =  New saldo;
+        	$solicitud->abono = 0;
+            $solicitud->cargo = $ClaveGrupo->costo;
+            $solicitud->user_id = Auth::user()->id;
+            $solicitud->referencia = "grupo";
+            $solicitud->banco = "NA";
+            $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
+            $solicitud->fecha  =  $convert_date;
+            $solicitud->save();
 		
        return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+   }
+    else {
+
+return  'No tienes saldo suficiente para ingresar al grupo'    ;
+   }
+
 		}
 	
 
