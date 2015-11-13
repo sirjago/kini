@@ -23,7 +23,7 @@ CREAR GRUPO
 
 
 {!!Form::label('Nombre del grupo')!!}<br>
-{!!Form::text('nombre')!!}<br>
+{!!Form::text('nombre',null,array('id' => 'nomgrupo'))!!}<br>
 <br>
 {!! Form::checkbox('limite', '1',null,array('id' => 'checkbox','onChange' => 'changefecha();')) !!}
 {!!Form::label('Fecha Limite')!!}
@@ -92,7 +92,12 @@ function changemiembros()
 <script>
 function validar() {
 
+    var nom = document.getElementById('nomgrupo').value;
     
+    if (nom == null || nom == "") {
+        alert("Ingresa el nombre del grupo");
+        return false;
+    }
 
     if (document.getElementById("checkbox").checked ) 
     {

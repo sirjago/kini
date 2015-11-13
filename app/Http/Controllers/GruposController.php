@@ -182,7 +182,7 @@ public function unircosto($id,$grupo,$costo)
         	$solicitud->abono = 0;
             $solicitud->cargo = $grupo->costo;
             $solicitud->user_id = Auth::user()->id;
-            $solicitud->referencia = "grupo";
+            $solicitud->referencia = "unido a grupo";
             $solicitud->banco = "NA";
             $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
             $solicitud->fecha  =  $convert_date;
@@ -218,8 +218,23 @@ public function unircosto($id,$grupo,$costo)
 
  public function salir($id)
     {
-       
+       //encuentra grupo
 		$grupo = grupos::find($id);
+		
+
+//Abona saldo al deshacer el grupo
+		    $solicitud =  New saldo;
+        	$solicitud->abono = $grupo->costo;
+            $solicitud->cargo = 0;
+            $solicitud->user_id = Auth::user()->id;
+            $solicitud->referencia = "grupo abandonado";
+            $solicitud->banco = "NA";
+            $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
+            $solicitud->fecha  =  $convert_date;
+            $solicitud->save();
+
+//Borra grupo
+
 		$grupo->delete();
 
 		return Redirect::route('grupos.show',array(Auth::user()->id, 1));
@@ -234,6 +249,21 @@ public function unircosto($id,$grupo,$costo)
     {
        
 		$user = User::find($id);
+
+        $gru = grupos::find($grupo);
+
+//Abona saldo al deshacer el grupo
+		    $solicitud =  New saldo;
+        	$solicitud->abono = $gru->costo;
+            $solicitud->cargo = 0;
+            $solicitud->user_id = Auth::user()->id;
+            $solicitud->referencia = "grupo abandonado";
+            $solicitud->banco = "NA";
+            $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
+            $solicitud->fecha  =  $convert_date;
+            $solicitud->save();
+
+
 	    $user->removeGrupo($grupo);
 		    
 
