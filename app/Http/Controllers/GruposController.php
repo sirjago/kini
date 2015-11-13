@@ -112,7 +112,7 @@ class GruposController extends Controller {
         	$solicitud->abono = 0;
             $solicitud->cargo = $ClaveGrupo->costo;
             $solicitud->user_id = Auth::user()->id;
-            $solicitud->referencia = "grupo";
+            $solicitud->referencia = "unido grupo";
             $solicitud->banco = "NA";
             $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
             $solicitud->fecha  =  $convert_date;
@@ -142,7 +142,7 @@ public function unircosto($id,$grupo,$costo)
         	$solicitud->abono = 0;
             $solicitud->cargo = $costo;
             $solicitud->user_id = $id;
-            $solicitud->referencia = "grupo";
+            $solicitud->referencia = "grupo creado";
             $solicitud->banco = "NA";
             $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
             $solicitud->fecha  =  $convert_date;
@@ -223,16 +223,18 @@ public function unircosto($id,$grupo,$costo)
 		
 
 //Abona saldo al deshacer el grupo
+		if($grupo->costo > 0)
+        {
 		    $solicitud =  New saldo;
         	$solicitud->abono = $grupo->costo;
             $solicitud->cargo = 0;
             $solicitud->user_id = Auth::user()->id;
-            $solicitud->referencia = "grupo abandonado";
+            $solicitud->referencia = "grupo deshecho";
             $solicitud->banco = "NA";
             $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
             $solicitud->fecha  =  $convert_date;
             $solicitud->save();
-
+         }
 //Borra grupo
 
 		$grupo->delete();
@@ -253,6 +255,8 @@ public function unircosto($id,$grupo,$costo)
         $gru = grupos::find($grupo);
 
 //Abona saldo al deshacer el grupo
+        if($gru->costo > 0)
+        {
 		    $solicitud =  New saldo;
         	$solicitud->abono = $gru->costo;
             $solicitud->cargo = 0;
@@ -262,7 +266,7 @@ public function unircosto($id,$grupo,$costo)
             $convert_date = date("Y-m-d", strtotime(  Carbon::now()));
             $solicitud->fecha  =  $convert_date;
             $solicitud->save();
-
+        }
 
 	    $user->removeGrupo($grupo);
 		    
