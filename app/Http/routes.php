@@ -130,7 +130,7 @@ Route::post('grupos/unircosto/{id}/{grupo}/{costo}', array('as' =>'grupos/unirco
 //Route::post('grupos/registrar', 'GruposController@register');
 Route::post('grupos/registrar', array('as' =>'grupos/registrar','uses'=>'GruposController@register'));
 Route::post('grupos/join', array('as' =>'grupos/join','uses'=>'GruposController@join'));
-
+Route::post('grupos/privado', array('as' =>'grupos/privado','uses'=>'GruposController@privado'));
 Route::resource('jornadas', 'JornadasController');
 
 Route::resource('users', 'UsersController');

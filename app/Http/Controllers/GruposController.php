@@ -336,4 +336,37 @@ $integrante =  Collection::make(DB::table('grupo_user')->get());
 
 
 
+    public function privado()
+    {
+        if(Auth::check()) 
+        {
+       // traigo el grupo
+         $clave = Input::get('clave');
+         $ClaveGrupo = grupos::whereClave($clave)->first();
+        
+        // traigo el num de participantes 
+         $integrante =  Collection::make(DB::table('grupo_user')->get());
+
+         //Verifico que exista el grupo
+
+         if ($ClaveGrupo == null)
+         {
+            return 'No existe el grupo';
+         }
+         
+         // traigo saldo
+
+          $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array(Auth::user()->id) );
+          $saldox = DB::select('select @saldoto as saldoto');   
+
+         
+    
+        
+       return view('pages.privado',['grupo' => $ClaveGrupo,'integrante' => $integrante,'saldox' => $saldox]);
+        }
+    }
+   
+
+
+
 }
