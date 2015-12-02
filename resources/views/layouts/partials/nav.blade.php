@@ -29,6 +29,7 @@
             <li><a href="{{ URL::route('cuentas.show',array(Auth::user()->id)) }}">Mis Cuentas</a></li>
             <li class="divider"></li>
             <li><a href="{{ URL::route('grupos.show',array(Auth::user()->id, 1)) }}">Grupos Privados</a></li>
+             <li><a href="{{ URL::route('privados.grupos',array(Auth::user()->id)) }}"> PrivaTT</a></li>
             <li><a href="#">Quinielas Generales</a></li>
             <li class="divider"></li>
             <li><a href="{{ URL::route('logout')}}">Logout</a></li>

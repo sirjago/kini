@@ -45,6 +45,25 @@ class GruposController extends Controller {
 		return 'Failed' ;
     }
 
+
+
+public function grupos($id)
+    {
+    if(Auth::user()->id == $id) 
+       {
+
+        $grupete = Collection::make(DB::select('CALL quini.Privados(?)',array(Auth::user()->id)));
+
+        return  view('pages.singrupo',['grupos' => $grupete]); 
+    
+
+
+    }
+    return 'Failed' ;
+    
+
+    }
+
 	
 	 public function create($id)
     {

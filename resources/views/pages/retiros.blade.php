@@ -34,7 +34,7 @@ Retiros en proceso
       
    <td>{!! Form::open(array( 'method' => 'DELETE', 'route' => array('cuentas.delete',Auth::user()->id, $noti->id))) !!}
                       
-                        {!! Form::submit('Cancelar', array('class' => 'btn btn-danger btn-xs')) !!}</td>
+                        {!! Form::submit('Cancelar', array('class' => 'btn btn-danger btn-xs')) !!} {!! Form::close() !!}</td> 
   </tr>
  
 

@@ -31,18 +31,27 @@ Lobby
     <th>Cooperacha </th>   
     <th>Participantes</th>
       <th>Unirse</th>
+
+
+
 @foreach($grupos->all() as $grupo)
 
 <?php  $si = 0;  ?>
 <?php  $vergo = 0;  ?>
+     <?php
+$num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
+      ?>
 
+@if ($num < $grupo->miembros )      
 @foreach($integrante->all() as $integrantex)
+
 @if (Auth::user()->id == $integrantex->user_id)
+@if ($integrantex->grupos_id == $grupo->grupos_id)
 <?php  $si = $integrantex->grupos_id;  ?>
+
+@endif
 @endif
 @endforeach
-
-
 
 
 @if ($si==$grupo->grupos_id )
@@ -97,7 +106,13 @@ $num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
 
 
   </tr>
+
+
  @endif
+
+
+@endif
+
 
 @endforeach
 </table> 

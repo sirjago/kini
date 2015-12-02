@@ -120,7 +120,7 @@ Route::get('grupos/crear/{id}', array('as'=>'grupos/crear','uses'=>'GruposContro
 Route::get('grupos/unirse/{id}', 'GruposController@unirse');
 
 Route::get('grupos/total/{id}/{jor}', array('as' =>'grupos.total','uses'=>'GruposController@total'));
-
+Route::get('privados/{id}/', array('as' =>'privados.grupos','uses'=>'GruposController@grupos'));
 Route::get('grupos/{id}/{jor}', array('as' =>'grupos.show','uses'=>'GruposController@show'));
 Route::get('grupos/{id}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@show']);
 Route::post('grupos/unircosto/{id}/{grupo}/{costo}', array('as' =>'grupos/unircosto','uses'=>'GruposController@unircosto'));

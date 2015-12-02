@@ -104,7 +104,7 @@ function validate() {
             alert("El costo de la cooperacha es mayor a tu saldo");
         return false;
      }
-alert(dat);
+
 
 
 
