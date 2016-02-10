@@ -21,12 +21,17 @@ use Illuminate\Support\Collection;
 
 Route::get('/lolo', function()
 {
+	$grupo =  User::find(32)->grupos->find(1);
+	$pete =  $grupo->pivot->owner  ;
 
-         $grupos = Collection::make(DB::select('CALL quini.LobbyActivos'));
+	//User::find(32)->grupos->find(2);
+        // $grupos = Collection::make(DB::select('CALL quini.LobbyActivos'));
          //$grupos =grupos::where('tipo_grupo',1)->orWhere('tipo_grupo',2)->WhereNULL('caducidad')->WhereNull('activo')->get();    
-         
-
-dd($grupos);
+      if ($grupo == NULL){
+      	dd($pete);
+      }   
+ 
+return 'hola';
 }
 );
 
@@ -119,15 +124,22 @@ Route::get('grupos/lobby', array('as'=>'grupos.lobby','uses'=>'GruposController@
 Route::get('grupos/crear/{id}', array('as'=>'grupos/crear','uses'=>'GruposController@create'));
 Route::get('grupos/unirse/{id}', 'GruposController@unirse');
 
-Route::get('grupos/total/{id}/{jor}', array('as' =>'grupos.total','uses'=>'GruposController@total'));
+Route::get('grupos/total/{id}/{gpo}/{jor}', array('as' =>'grupos.total','uses'=>'GruposController@total'));
 Route::get('privados/{id}/', array('as' =>'privados.grupos','uses'=>'GruposController@grupos'));
 Route::get('grupos/{id}/{jor}', array('as' =>'grupos.show','uses'=>'GruposController@show'));
 Route::get('grupos/{id}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@show']);
+
+
+Route::get('engrupos/{id}/{jor}', array('as' =>'engrupos.showall','uses'=>'GruposController@showAll'));
+Route::get('engrupos/{id}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@showAll']);
+
+Route::get('grupos/muestra/{id}/{gpo}/{jor}', array('as' =>'grupos.muestra','uses'=>'GruposController@muestra'));
+Route::get('grupos/muestra/{id}/{gpo}/{jor}', ['middleware' =>'auth','uses'=>'GruposController@muestra']);
+
+
 Route::post('grupos/unircosto/{id}/{grupo}/{costo}', array('as' =>'grupos/unircosto','uses'=>'GruposController@unircosto'));
 
-//Route::get('grupos/crear/{ido}', array('as' =>'grupos.create','uses'=>'GruposController@create'));
-//Route::get('grupos/crear/{id}', ['middleware' =>'auth','uses'=>'GruposController@create']);
-//Route::post('grupos/registrar', 'GruposController@register');
+
 Route::post('grupos/registrar', array('as' =>'grupos/registrar','uses'=>'GruposController@register'));
 Route::post('grupos/join', array('as' =>'grupos/join','uses'=>'GruposController@join'));
 Route::post('grupos/privado', array('as' =>'grupos/privado','uses'=>'GruposController@privado'));

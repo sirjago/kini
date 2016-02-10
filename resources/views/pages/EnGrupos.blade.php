@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+GRUPOS A LOS QUE PERTENZCO
 <br>
 
 <br>

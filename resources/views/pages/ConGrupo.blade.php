@@ -1,15 +1,17 @@
-@extends('master')
+@extends('default')
 
 @section('content')
 
 
 
 
+<br><br><br>
+<br>
 
 
 
-
-
+Nombre Del Grupo:<li>{!! $grupos->nombre!!}</li>
+Clave del Grupo: <li>{!! $grupos->clave!!}</li>
 
 <br>
 
@@ -17,11 +19,7 @@
 Duenio GRUPOS
 <br><br><br><br>
 
-Nombre Del Grupo:<li>{!! $grupos[0]->nombre!!}</li>
 
-Clave del Grupo: <li>{!! $grupos[0]->clave!!}</li>
-
-GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 
 
 
@@ -31,24 +29,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-    <li class="active" ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+    <li class="active" ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
 
 	 
@@ -60,24 +58,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li class="active" ><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li class="active" ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -87,24 +85,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, $grupos->id,18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -114,24 +112,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id,5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, $grupos->id,18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -141,24 +139,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -168,24 +166,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -195,24 +193,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id,6))!!}">6</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -222,24 +220,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -250,24 +248,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,2))!!}">2</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, $grupos->id,18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -277,24 +275,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li class="active" ><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li class="active" ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -304,24 +302,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,10))!!}">10</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, $grupos->id,18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -331,24 +329,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,4))!!}">4</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,11))!!}">11</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -358,24 +356,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -385,24 +383,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,13))!!}">13</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -412,24 +410,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -439,24 +437,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,14))!!}">14</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -466,24 +464,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li class="active"><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li class="active"><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>
@@ -493,24 +491,24 @@ GRUPID: <li>{!! $miembros[0]->pivot->grupos_id!!}</li>
 <nav>
   <ul class="pagination">
     
-     <li  ><a href="{!!route('grupos.show',array(Auth::user()->id, 1))!!}">1 </a></li>
-     <li><a href="{!!route('grupos.show',array(Auth::user()->id, 2))!!}">2</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 3))!!}">3</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 4))!!}">4</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 5))!!}">5</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 6))!!}">6</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 7))!!}">7</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 8))!!}">8</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 9))!!}">9</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 10))!!}">10</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 11))!!}">11</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 12))!!}">12</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 13))!!}">13</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 14))!!}">14</a></li>
-	 <li ><a href="{!!route('grupos.show',array(Auth::user()->id, 15))!!}">15</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 16))!!}">16</a></li>
-	 <li><a href="{!!route('grupos.show',array(Auth::user()->id, 17))!!}">17</a></li>
-	 <li class="active" ><a href="{!!route('grupos.total',array(Auth::user()->id, 18))!!}">Total</a></li>
+     <li  ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 1))!!}">1 </a></li>
+     <li><a href="{!!route('grupos.muestra',array(Auth::user()->id, $grupos->id,2))!!}">2</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 3))!!}">3</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 4))!!}">4</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 5))!!}">5</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 6))!!}">6</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 7))!!}">7</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 8))!!}">8</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 9))!!}">9</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 10))!!}">10</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 11))!!}">11</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 12))!!}">12</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 13))!!}">13</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 14))!!}">14</a></li>
+	 <li ><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 15))!!}">15</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 16))!!}">16</a></li>
+	 <li><a href="{!!route('grupos.muestra',array(Auth::user()->id,$grupos->id, 17))!!}">17</a></li>
+	 <li class="active" ><a href="{!!route('grupos.total',array(Auth::user()->id,$grupos->id, 18))!!}">Total</a></li>
 
   </ul>
 </nav>

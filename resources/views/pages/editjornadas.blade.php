@@ -16,7 +16,7 @@ VALUE<li>+{!! $jornadas->RL!!}+</li><br><br>
 
 <li>{!! $equipos[0]->nombre!!}</li><br><br>
 
-<a class="btn btn-success" href="{{ URL::route('grupos.show',array(Auth::user()->id, 1)) }}" role="button">GRUPOS PRIVADOS</a>
+
 <a class="btn btn-success" href="{{ URL::route('grupos.general',array(Auth::user()->id)) }}" role="button">Quiniela General</a>
 
 

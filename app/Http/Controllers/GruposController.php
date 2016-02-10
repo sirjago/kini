@@ -47,6 +47,61 @@ class GruposController extends Controller {
 
 
 
+
+       public function showAll($id,$jor)
+    {
+       if(Auth::user()->id == $id) 
+       {
+        
+        $grupo =  User::find($id)->grupos;
+        
+    
+        if (!$grupo->isEmpty())
+         {
+               // $miembro = Grupos::find($grupo->first()->id)->users;
+            
+             return  view('pages.EnGrupos',['grupos' => $grupo]); 
+                //return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);    
+            
+                   //return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);   
+          }  
+          return  'No perteneces a ningun grupo'; 
+
+        }
+        return 'Failed' ;
+    }
+
+
+
+   public function muestra($id,$gpo,$jor)
+    {
+       if(Auth::user()->id == $id) 
+       {
+        
+        $grupo =  User::find($id)->grupos->find($gpo);
+     
+
+
+      //  if (!$grupo == 'NULL')
+     //    {
+                $miembro = Grupos::find($grupo->first()->id)->users;
+            if($grupo->pivot->owner == 1)
+            {
+                return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);    
+            }
+                   return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);   
+        //  }  
+     //     return  view('pages.singrupo',['grupos' => $grupo]); 
+
+        }
+        return 'Failed' ;
+    }
+
+
+
+
+
+
 public function grupos($id)
     {
     if(Auth::user()->id == $id) 
@@ -137,7 +192,7 @@ public function grupos($id)
             $solicitud->fecha  =  $convert_date;
             $solicitud->save();
 		
-       return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+       return Redirect::route('grupos.muestra',array(Auth::user()->id,$ClaveGrupo, 1));
    }
     else {
 
@@ -290,31 +345,32 @@ public function unircosto($id,$grupo,$costo)
 	    $user->removeGrupo($grupo);
 		    
 
-        return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+        //return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+        return Redirect::route('privados.grupos',array(Auth::user()->id ));
 	
     }
 
 
-     public function total($id,$jor)
+     public function total($id,$gpo,$jor)
     {
        
 		 if(Auth::user()->id == $id) 
        {
 	
-		$grupo =  User::find($id)->grupos;
+		$grupo =  User::find($id)->grupos->find($gpo);
 		
 	
-		if (!$grupo->isEmpty())
+		if (!$grupo == NULL)
 		 {
 				$miembro = Grupos::find($grupo->first()->id)->users;
-			if($grupo->first()->pivot->owner == 1)
+			if($grupo->pivot->owner == 1)
 			{
 				return view('pages.ConGruposTotal',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
 			}
 		           return view('pages.gruposTotal',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);	
 		  }  
-		  return  view('pages.singrupo',['grupos' => $grupo]); 
-
+		  //return  view('pages.singrupo',['grupos' => $grupo]); 
+return 'Failedss' ;
 		}
 		return 'Failed' ;
 	
