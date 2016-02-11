@@ -16,6 +16,9 @@
 {!! $grupos!!}
 
 
+<br>
+
+<br>
 
 
 GRUPOS PRIVADOS a los que perteneces
@@ -32,7 +35,11 @@ GRUPOS PRIVADOS a los que perteneces
 
 
 <tr>
-  <td>{!! $grupo->Nombre!!}</td>
+  <td>{!! $grupo->Nombre!!} 
+    @if ($grupo->ownerId == Auth::user()->id)
+                              {!! HTML::image('images/power.png', 'Dueno grupo', array( 'width' => 25, 'height' => 25 )) !!}
+                          @endif
+                        </td>
       
       
 
@@ -67,7 +74,7 @@ $num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
                        <input class="btn btn-info btn-xs"  type="submit" value="Ver Grupo">
                       {!!Form::close()!!}
                    
-
+                         
                       </td>
 
 
@@ -84,7 +91,7 @@ $num = DB::table('grupo_user') ->where('grupos_id', '=', $grupo->id)->count();
 
 
 <br>
-
+{!! HTML::image('images/power.png', 'Dueno grupo', array( 'width' => 25, 'height' => 25 )) !!} - Dueno del Grupo
 <br>
 <a class="btn btn-success" href="{{  URL::route('grupos/crear',Auth::user()->id)  }}" role="button">Crear  Grupo</a>
 
