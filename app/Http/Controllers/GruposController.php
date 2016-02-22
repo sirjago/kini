@@ -83,8 +83,8 @@ class GruposController extends Controller {
 
 
       //  if (!$grupo == 'NULL')
-     //    {
-                $miembro = Grupos::find($grupo->first()->id)->users;
+     //    {   
+                $miembro = Grupos::find($grupo->id)->users;
             if($grupo->pivot->owner == 1)
             {
                 return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);    
@@ -104,6 +104,7 @@ class GruposController extends Controller {
 
 public function grupos($id)
     {
+        if(Auth::check()) {
     if(Auth::user()->id == $id) 
        {
 
@@ -115,7 +116,8 @@ public function grupos($id)
 
     }
     return 'Failed' ;
-    
+    }
+    else return Redirect::to('/login');  
 
     }
 
@@ -174,7 +176,7 @@ public function grupos($id)
 		 
 		 // valida tener saldo para ingresar al grupo
 
-		 if($ClaveGrupo->costo < $saldox[0]->saldoto){
+		 if($ClaveGrupo->costo <= $saldox[0]->saldoto){
 
          //Hace relacion de grupos y user (unir)
         
@@ -283,7 +285,7 @@ public function unircosto($id,$grupo,$costo)
 		
 
 
-		return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+		return Redirect::route('grupos.muestra',array(Auth::user()->id,$grupete->id, 1));
 	}
 		else return Redirect::to('/login');
 		//return Redirect::route('pages.grupos',Auth::user()->id);
@@ -419,6 +421,10 @@ $integrante =  Collection::make(DB::table('grupo_user')->get());
          $clave = Input::get('clave');
          $ClaveGrupo = grupos::whereClave($clave)->first();
         
+        //traigo todos los que pertencen al grupo
+         $pertenece =  Collection::make(DB::table('grupo_user')->wheregrupos_id($ClaveGrupo->id)->get());
+
+
         // traigo el num de participantes 
          $integrante =  Collection::make(DB::table('grupo_user')->get());
 
@@ -429,6 +435,15 @@ $integrante =  Collection::make(DB::table('grupo_user')->get());
             return 'No existe el grupo';
          }
          
+         // Verifico que no pertezca ya al grupo
+         if( $pertenece->contains('user_id', Auth::user()->id))
+          {
+            return 'ya pertences a este grupo';
+          }
+
+
+
+
          // traigo saldo
 
           $res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array(Auth::user()->id) );

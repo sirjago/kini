@@ -7,10 +7,10 @@
 
 
 
-Nombre del grupo: {!! $grupo->nombre!!}  
-
+Nombre del grupo: {!! $grupo->nombre!!}  <br>
+ID del grupo: {!! $grupo->id!!}  
 <br>
-
+{!! $integrante[0]->Owner!!} 
 <br>
 
 
@@ -99,9 +99,10 @@ function validate() {
  var numemb2 = document.getElementById('memberhidden2').value;
  var Sald = '<?php echo $saldox[0]->saldoto; ?>';
 
- if (x < Sald){
+ if (x > Sald){
            
             alert("El costo de la cooperacha es mayor a tu saldo");
+            
         return false;
      }
 

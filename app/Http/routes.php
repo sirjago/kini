@@ -21,17 +21,14 @@ use Illuminate\Support\Collection;
 
 Route::get('/lolo', function()
 {
-	$grupo =  User::find(32)->grupos->find(1);
-	$pete =  $grupo->pivot->owner  ;
-
-	//User::find(32)->grupos->find(2);
-        // $grupos = Collection::make(DB::select('CALL quini.LobbyActivos'));
-         //$grupos =grupos::where('tipo_grupo',1)->orWhere('tipo_grupo',2)->WhereNULL('caducidad')->WhereNull('activo')->get();    
-      if ($grupo == NULL){
-      	dd($pete);
-      }   
- 
-return 'hola';
+	
+	$ClaveGrupo = grupos::whereClave('J88PZ6nm0K')->first();
+	    $pertenece =  Collection::make(DB::table('grupo_user')->wheregrupos_id($ClaveGrupo->id)->get());
+  if( $pertenece->contains('user_id', Auth::user()->id))
+{
+	 return 'No existe el ' ;}
+	// else dd($pertenece);
+	 else dd($ClaveGrupo);
 }
 );
 

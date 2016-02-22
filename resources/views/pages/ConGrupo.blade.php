@@ -10,8 +10,8 @@
 
 
 
-Nombre Del Grupo:<li>{!! $grupos->nombre!!}</li>
-Clave del Grupo: <li>{!! $grupos->clave!!}</li>
+
+
 
 <br>
 
@@ -517,8 +517,9 @@ Duenio GRUPOS
 
 Jornada: <li>{!! $jor !!}</li>
 
-Miembros:<li>{!! $miembros !!}</li><br><br>
 
+
+Miembros:<li>{!! $miembros !!}</li><br><br>
 {{-- Variables --}}
 <?php $z  =0; ?>
 <?php $y  =0; ?>
@@ -544,6 +545,7 @@ Miembros:<li>{!! $miembros !!}</li><br><br>
 @endforeach
 
 {{-- SORT de ambos arrays --}}
+
 <?php
 
 array_multisort($arrai2, SORT_DESC ,$usernam,$arrai );
@@ -575,6 +577,10 @@ var_dump($arrai2);
 
 
 @endforeach
+
+
+
+
 @foreach ($usernam as $usr)
 {!! $usr!!} <br> 
 
