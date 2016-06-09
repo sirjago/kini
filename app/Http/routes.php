@@ -22,13 +22,9 @@ use Illuminate\Support\Collection;
 Route::get('/lolo', function()
 {
 	
-	$ClaveGrupo = grupos::whereClave('J88PZ6nm0K')->first();
-	    $pertenece =  Collection::make(DB::table('grupo_user')->wheregrupos_id($ClaveGrupo->id)->get());
-  if( $pertenece->contains('user_id', Auth::user()->id))
-{
-	 return 'No existe el ' ;}
-	// else dd($pertenece);
-	 else dd($ClaveGrupo);
+	$grupo = grupos::whereownerid(32)->first();
+
+	 dd($grupo);
 }
 );
 

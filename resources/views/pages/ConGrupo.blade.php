@@ -16,12 +16,12 @@
 <br>
 
 <br>
-Duenio GRUPOS
+Duenio GRUPOSSS
 <br><br><br><br>
 
 
-
-
+Clave de Acceso al grupo: {!! $grupos->clave!!}
+Nombre del Grupo: {!! $grupos->nombre!!}
 
 
 

@@ -99,10 +99,11 @@ function validate() {
  var numemb2 = document.getElementById('memberhidden2').value;
  var Sald = '<?php echo $saldox[0]->saldoto; ?>';
 
- if (x > Sald){
+ if (x === "null" ) {var x=0;}
+  if(x > Sald){
            
             alert("El costo de la cooperacha es mayor a tu saldo");
-            
+            alert(x);
         return false;
      }
 

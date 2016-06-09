@@ -264,7 +264,7 @@ public function unircosto($id,$grupo,$costo)
             $solicitud->fecha  =  $convert_date;
             $solicitud->save();
 		
-		}
+		} else {$grupo->costo = 0;}
 
          if ($part == true) {
 			$grupo->miembros = Input::get('miembros');
@@ -280,7 +280,7 @@ public function unircosto($id,$grupo,$costo)
        //Hace relacion de grupos y user (crear)
         $grupete = grupos::whereownerid(Auth::user()->id)->first();
         $user = User::find(Auth::user()->id);
-		$user->OwnerGrupo($grupete->id);
+		$user->OwnerGrupo($grupo->id);
 
 		
 
