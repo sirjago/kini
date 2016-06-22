@@ -526,6 +526,8 @@ Miembros:<li>{!! $miembros !!}</li><br><br>
 <?php $arrai =Array(); ?>
 <?php $param2 = $jor ; ?>
 
+<?php $m  =0; ?>
+
 {{-- Call a SP y asginacion de valors a arrays--}}
 @foreach ($miembros as $miembro)
 <?php $aciertox  =0; ?>
@@ -542,6 +544,7 @@ Miembros:<li>{!! $miembros !!}</li><br><br>
 <?php $arrai2 [$z] =Collect( $results2[0]->desempatex ); ?>
 <?php $z  =$z+1; ?>
 
+<?php $m  =$m+1; ?>
 @endforeach
 
 {{-- SORT de ambos arrays --}}
@@ -556,6 +559,14 @@ var_dump($arrai2);
 ?>
 
 <?php $arrai= new Illuminate\Support\Collection($arrai);?>
+
+{{-- Paso conteo de miembros a DOM --}}
+<div id="dom-target" style="display: none;">
+    <?php 
+        $output = $m; 
+        echo htmlspecialchars($output); 
+    ?>
+</div>
 
 {{-- Formato para mostrar datos --}}
 @foreach ($arrai as $arra)
@@ -606,7 +617,28 @@ var_dump($arrai2);
 
 
 
-{!! Form::open(array( 'method' => 'DELETE', 'route' => array('grupos/salir', $miembros[0]->pivot->grupos_id))) !!}
+ {!! Form::open(array( 'method' => 'DELETE', 'route' => array('grupos/salir', $miembros[0]->pivot->grupos_id) , 'onSubmit' => 'return validagrupo();')) !!}
                       
                         {!! Form::submit('DESHACER GRUPO', array('class' => 'btn btn-success')) !!}
+
+
+
+<script type="text/javascript">
+function validagrupo() {
+   var div = document.getElementById("dom-target");
+    var myData = div.textContent;
+   
+
+
+ if (myData > 1){
+           alert(myData);
+            alert("No puedes deshacer un grupo con usuarios registrados");
+        return false;
+     }
+
+}
+   </script>
+
+
+
 @stop
