@@ -22,9 +22,19 @@ use Illuminate\Support\Collection;
 Route::get('/lolo', function()
 {
 	
-	$grupo = grupos::whereownerid(32)->first();
+        //$grupo =  User::find(32)->grupos->find(12);
+     
 
-	 dd($grupo);
+$grupo = grupos::whereownerid(32)->find(12);
+       
+                $miembro = Grupos::find($grupo->id)->users;
+
+
+
+
+	
+
+	 dd($miembro);
 }
 );
 

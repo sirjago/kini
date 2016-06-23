@@ -127,7 +127,7 @@ public function grupos($id)
     		if(Auth::check()) {
         if(Auth::user()->id == $id) {
 		$grupo = grupos::whereownerid($id)->first();
-
+//$grupo = grupos::whereownerid(32)->find(12);
 		$res = DB::select('CALL quini.SaldoUser(?,@saldoto)',array($id) );
 		  $saldox = DB::select('select @saldoto as saldoto');  
 		  
@@ -278,7 +278,8 @@ public function unircosto($id,$grupo,$costo)
 		$grupo->save();
 
        //Hace relacion de grupos y user (crear)
-        $grupete = grupos::whereownerid(Auth::user()->id)->first();
+        //$grupete = grupos::whereownerid(Auth::user()->id)->first();
+        $grupete = grupos::whereownerid(Auth::user()->id)->find($grupo->id);
         $user = User::find(Auth::user()->id);
 		$user->OwnerGrupo($grupo->id);
 
@@ -314,11 +315,13 @@ public function unircosto($id,$grupo,$costo)
 //Borra grupo
 
 		$grupo->delete();
+        
+		//return Redirect::route('grupos.show',array(Auth::user()->id, 1));
+		// $grupete = Collection::make(DB::select('CALL quini.Privados(?)',array(Auth::user()->id)));
 
-		return Redirect::route('grupos.show',array(Auth::user()->id, 1));
-		    
+        //return  view('pages.singrupo',['grupos' => $grupete]);    
 
-
+              return Redirect::route('privados.grupos',array(Auth::user()->id ));
 	
     }
 
