@@ -80,7 +80,7 @@ class GruposController extends Controller {
         
         $grupo =  User::find($id)->grupos->find($gpo);
      
-
+       $fecha =  DB::select('select fecha from general where id = 1');
 
       //  if (!$grupo == 'NULL')
      //    {   
@@ -89,7 +89,7 @@ class GruposController extends Controller {
             {
                 return view('pages.ConGrupo',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);    
             }
-                   return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro])->with('jor',$jor);   
+                   return view('pages.grupos',['grupos' => $grupo,'miembros' => $miembro,'fechai' => $fecha])->with('jor',$jor);   
         //  }  
      //     return  view('pages.singrupo',['grupos' => $grupo]); 
 

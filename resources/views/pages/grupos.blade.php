@@ -1,9 +1,13 @@
 @extends('default')
 
 @section('content')
+<?php  use Jenssegers\Date\Date;   ?>
+<?php  Date::setLocale('es');  ?>
 <br> <br><br> <br>
 Grupo<br> <br>
 {!! $grupos!!}
+
+
 <br> <br>
 miembros
 {!! $miembros !!} cc
@@ -596,10 +600,70 @@ var_dump($arrai2);
 
 @endforeach
 
+
+ <?php $x =  DB::select('select fecha from general where id = 1'); ?>
+
+
+
+ <?php  $date = new Date($x[0]->fecha);?>
+  
+  @if (strtotime($date) > strtotime('now'))
+
+<?php $fechai =0; ?>
+	
+@else 
+	
+<?php  $fechai =1; ?>
+@endif
+
+
+
+
+
+{{-- Paso fecha de inicio a DOM --}}
+<div id="dom-target" style="display: none;">
+    <?php 
+        $output = $fechai; 
+        echo htmlspecialchars($output); 
+    ?>
+</div>
+
+
+
 <br> <br> <br> 
 <a class="btn btn-success" href="{{ URL::route('jornadas/showo',array(Auth::user()->id, 1)) }}" role="button">QUINIELA</a>
 
-<a class="btn btn-success" href="{{ URL::route('grupos/dejar',array(Auth::user()->id, $grupos->id)) }}" role="button">ABANDONAR GRUPO</a>
+{!! Form::open(array( 'method' => 'get','route' => array('grupos/dejar', Auth::user()->id, $grupos->id) , 'onSubmit' => 'return validasalida();')) !!}
+   {!! Form::submit('ABANDONAR GRUPO', array('class' => 'btn btn-success')) !!}
+
+
+<script type="text/javascript">
+function validasalida() {
+   var div = document.getElementById("dom-target");
+    var myData = div.textContent;
+   
+
+
+  if (myData > 0){
+       
+        
+            alert(myData);
+            alert("El grupo no puede ser abandonado dado que ya comenzo la quiniela");
+         
+        return false;}
+    
+
+
+    
+
+}
+   </script>
+
+
+
+
+
+
 
 @stop
  

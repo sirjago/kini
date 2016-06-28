@@ -13,6 +13,7 @@
 use Jenssegers\Date\Date;
 use App\user;
 use App\grupos;
+use App\general;
 use App\quiniela;
 use App\estado;
 use App\Saldo;
@@ -22,19 +23,22 @@ use Illuminate\Support\Collection;
 Route::get('/lolo', function()
 {
 	
-        //$grupo =  User::find(32)->grupos->find(12);
-     
-
-$grupo = grupos::whereownerid(32)->find(12);
-       
-                $miembro = Grupos::find($grupo->id)->users;
+      
+       $x =  DB::select('select fecha from general where id = 1');
 
 
 
+$date = new Date($x[0]->fecha);
+  
+  if (strtotime($date) > strtotime('now'))
+{
+dd('hola');
+	}
+else {
+	 dd('no mayor');
 
+}
 	
-
-	 dd($miembro);
 }
 );
 

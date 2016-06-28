@@ -631,10 +631,11 @@ function validagrupo() {
 
 
  if (myData > 1){
-           alert(myData);
+           
             alert("No puedes deshacer un grupo con usuarios registrados");
         return false;
      }
+    
 
 }
    </script>
